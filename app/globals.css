@@ -1,7 +1,39 @@
+/* Pretendard 폰트 추가 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-pretendard: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, sans-serif;
+}
+
+html {
+  font-family: var(--font-pretendard);
+  scroll-behavior: smooth;
+}
+
+/* 스크롤바 커스텀 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* 원래 있던 global.css */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,4 +50,21 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 다크모드라는데 일단 넣어둠 버그 생길거 같음 */
+:root {
+  --foreground: #000000;
+  --background: #ffffff;
+}
+
+.dark {
+  --foreground: #ffffff;
+  --background: #1a1a1a;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  transition: background-color 0.3s ease;
 }

@@ -1,0 +1,38 @@
+{
+  "contact": {
+    "email": "0102262@gmail.com",
+    "blog": "https://aster-code.tistory.com/",
+    "github": ""
+  },
+  "skills": [
+    "React",
+    "JavaScript",
+    "TypeScript",
+    "Next.js",
+    "Redux",
+    "Express",
+    "Styled Components",
+    "Tailwind CSS"
+  ],
+  "ko": {
+    "name": "박소민",
+    "role": "프론트엔드 개발자",
+
+    "about": "공감과 배려를 중요시 하는",
+    "intro": [
+      "모든 프로젝트의 UX/UI를 중요하게 생각해요",
+      "연령층, 국적에 관계 없이 누구나 친해질 수 있어요",
+      "애자일 등 프로덕트가 생산되는 과정을 중요시 여겨요"
+    ]
+  },
+  "en": {
+    "name": "Somin Park",
+    "role": "Frontend Developer",
+    "about": "Empathy and consideration are important",
+    "intro": [
+      "UX/UI is an important part",
+      "I hang out all the people regardless of age, nationality",
+      "The process of producing products such as agile is important"
+    ]
+  }
+}

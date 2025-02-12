@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 // Lazy load components
 const Hero = dynamic(() => import("@/components/Hero"));
 const About = dynamic(() => import("@/components/About"));
-const Portfolio = dynamic(() => import("@/components/Portfolio"));
+const Portfolio = dynamic(() => import("@/components/Projects"));
 const Contact = dynamic(() => import("@/components/Contact"));
 const Navigation = dynamic(() => import("@/components/Navigation"));
 const ScrollToTop = dynamic(() => import("@/components/ScrollToTop"), {
@@ -37,21 +37,25 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen">
-      <Navigation activeSection={activeSection} />
-      <section id="hero" className="min-h-screen">
-        <Hero />
-      </section>
-      <section id="about" className="min-h-screen bg-gray-50">
-        <About />
-      </section>
-      <section id="portfolio" className="min-h-screen">
-        <Portfolio />
-      </section>
-      <section id="contact" className="min-h-screen bg-gray-50">
-        <Contact />
-      </section>
-      <ScrollToTop />
-    </main>
+    <>
+      <header>
+        <Navigation activeSection={activeSection} />
+      </header>
+      <main className="min-h-screen">
+        <section id="hero" className="min-h-screen">
+          <Hero />
+        </section>
+        <section id="about" className="min-h-screen bg-gray-50">
+          <About />
+        </section>
+        <section id="portfolio" className="min-h-screen">
+          <Portfolio />
+        </section>
+        <section id="contact" className="min-h-screen bg-gray-50">
+          <Contact />
+        </section>
+        <ScrollToTop />
+      </main>
+    </>
   );
 }

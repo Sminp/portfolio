@@ -1,16 +1,15 @@
-// components/LanguageToggle.tsx
 "use client";
-import { useLanguage } from "@/context/LanguageContext";
+import { useLanguageStore } from "@/stores/useLanguageStore";
 import { motion } from "framer-motion";
 
 export default function LanguageToggle() {
-  const { language, toggleLanguage } = useLanguage();
+  const { language, setLanguage } = useLanguageStore();
 
   return (
     <motion.button
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      onClick={toggleLanguage}
+      onClick={() => setLanguage(language === "ko" ? "en" : "ko")}
       className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       aria-label="언어 변경"
     >

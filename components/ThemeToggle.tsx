@@ -1,16 +1,15 @@
-// components/ThemeToggle.tsx
 "use client";
-import { useTheme } from "@/context/ThemeContext";
+import { useThemeStore } from "@/stores/useThemeStore";
 import { motion } from "framer-motion";
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useThemeStore();
 
   return (
     <motion.button
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      onClick={toggleTheme}
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       aria-label="테마 변경"
     >

@@ -10,7 +10,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     // 초기 로딩 애니메이션을 위한 타이머
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);

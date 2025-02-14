@@ -1,8 +1,8 @@
-import Link from "next/link";
-import profileData from "@/data/profile.json";
+// import Link from "next/link";
+// import profileData from "@/data/profile.json";
 
 export default function Contact() {
-  const contact = profileData.contact;
+  // const contact = profileData.contact;
 
   return (
     <>

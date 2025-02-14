@@ -13,7 +13,9 @@ export default function LanguageToggle() {
       className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       aria-label="언어 변경"
     >
-      {language === "ko" ? "🇰🇷" : "🇺🇸"}
+      <p className="text-xl text-left text-[#4d4f78]">
+        {language === "ko" ? "EN" : "KR"}
+      </p>
     </motion.button>
   );
 }

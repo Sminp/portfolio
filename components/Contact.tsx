@@ -5,35 +5,41 @@ export default function Contact() {
   const contact = profileData.contact;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-20">
-      <h2 className="text-3xl font-bold mb-8 text-center">Contact</h2>
-      <div className="space-y-6">
-        <div className="flex items-center justify-center space-x-6">
-          <a
-            href={`mailto:${contact.email}`}
-            className="flex items-center space-x-2 text-gray-600 hover:text-blue-600"
-          >
-            <span className="text-lg">📧</span>
-            <span>{contact.email}</span>
-          </a>
-          <Link
-            href={`${contact.github}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center space-x-2 text-gray-600 hover:text-blue-600"
-          >
-            <span className="text-lg">Github</span>
-          </Link>
-          <Link
-            href={`${contact.blog}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center space-x-2 text-gray-600 hover:text-blue-600"
-          >
-            <span className="text-lg">Blog</span>
-          </Link>
+    <>
+      <div>
+        <div className="w-[1440px] h-[546px] bg-[#d9d9d9]" />
+        <div className="w-[1240px] h-[546px] relative overflow-hidden">
+          <div className="w-[855px] h-[206px]">
+            <p className="absolute left-[617px] top-[57px] text-xl font-semibold text-right text-[#4d4f78]">
+              About me
+            </p>
+            <p className="absolute left-[75px] top-[103px] text-xl text-left text-[#4d4f78]">
+              <span className="text-xl text-left text-[#4d4f78]">
+                Tel. : 010-5598-8268
+              </span>
+              <br />
+              <span className="text-xl text-left text-[#4d4f78]">
+                Email : 0102262@gmail.com
+              </span>
+              <br />
+              <span className="text-xl text-left text-[#4d4f78]">
+                Github : https://github.com/Sminp
+              </span>
+              <br />
+              <span className="text-xl text-left text-[#4d4f78]">
+                Blog : https://aster-code.tistory.com/
+              </span>
+            </p>
+            <p className="absolute left-[854px] top-[57px] text-xl font-semibold text-right text-[#4d4f78]">
+              Projects
+            </p>
+          </div>
+          <p className="absolute left-[75px] top-[50px] text-[32px] font-semibold text-left text-[#4d4f78]">
+            Contact
+          </p>
         </div>
       </div>
-    </div>
+      ;
+    </>
   );
 }

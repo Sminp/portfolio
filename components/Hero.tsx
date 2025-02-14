@@ -11,19 +11,17 @@ export default function Hero() {
   return (
     <div className="flex items-center justify-center min-h-screen px-4">
       <div className="text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          {general.greeting} 👋
+        <p className="text-[64px] text-left">
+          <span className="text-[64px] text-left">{profile.about}</span>
+          <span className="text-[64px] text-left text-[#00033d]"> </span>
           <br />
-          <span className="text-blue-600 text-7xl">
-            {profile.about}
-            <br />
-            {profile.role}
+          <span className="text-[64px] text-left text-[#00033d]">
+            {profile.role}입니다.
           </span>
-          입니다
-        </h1>
+        </p>
         <br />
         <Link
-          href="#portfolio"
+          href="#projects"
           className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-colors"
         >
           {general.projectBtn}

@@ -6,43 +6,63 @@ export default function About() {
   const profile = profileData[language];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-20">
-      <h2 className="text-3xl font-bold mb-8 text-center">About Me</h2>
-      <div className="space-y-6">
-        <ol className="text-lg text-gray-700 text-center">
-          {profile.intro.map((text, idx) => {
-            return <li key={idx}>{text}</li>;
-          })}
-        </ol>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Skills</h3>
-            <div className="space-y-2">
-              <div className="flex items-center">
-                <span className="font-medium w-24">Frontend:</span>
-                <span>React, Next.js, TypeScript, JavaScript</span>
-              </div>
-              <div className="flex items-center">
-                <span className="font-medium w-24">Backend:</span>
-                <span>Node.js, Express</span>
-              </div>
-              <div>
-                <span className="font-medium w-24">Tool:</span>
-                <span>Github, Notion, Figma</span>
-              </div>
+    <>
+      <div className="w-[1440px] h-[731px] relative overflow-hidden bg-white">
+        <div className="w-[1040px] h-[531px] absolute left-[200px] top-[100px] rounded-[20px]">
+          <p className="absolute left-[430px] top-0 text-[40px] font-semibold text-left text-[#00033d]">
+            About me
+          </p>
+          <p className="absolute left-[191px] top-[62px] text-[32px] text-left">
+            {profile.intro.map((text, index) => {
+              return (
+                <span
+                  key={index}
+                  className="text-[32px] text-left text-[#00033d]"
+                >
+                  {text} <br />
+                </span>
+              );
+            })}
+          </p>
+          <div className="w-[490px] h-[265px] absolute left-[15px] top-[251px] rounded-[20px]">
+            <div className="w-[430px] h-[166px]">
+              <p className="absolute left-[15px] top-[15px] text-[32px] font-semibold text-left text-[#00033d]">
+                Skills
+              </p>
+              <p className="absolute left-[15px] top-[67px] text-xl text-left text-[#00033d]">
+                <span className="text-xl text-left text-[#00033d]">
+                  Frontend : React, Next.js, TypeScript, JavaScript
+                </span>
+                <br />
+                <span className="text-xl text-left text-[#00033d]">
+                  Backend:Node.js, Express
+                </span>
+                <br />
+                <span className="text-xl text-left text-[#00033d]">
+                  Tool:Github, Notion, Figma
+                </span>
+              </p>
             </div>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Education</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="font-medium">컴퓨터공학 학사</p>
-                <p className="text-gray-600">서울과학기술대학교 (2020.03 -)</p>
-              </div>
+          <div className="w-[490px] h-[265px] absolute left-[534px] top-[251px] rounded-[20px]">
+            <div className="w-[264px] h-32">
+              <p className="absolute left-[15px] top-[15px] text-[32px] font-semibold text-left text-[#00033d]">
+                Education
+              </p>
+              <p className="absolute left-[15px] top-[67px] text-xl text-left text-[#00033d]">
+                <span className="text-xl text-left text-[#00033d]">
+                  컴퓨터공학 학사
+                </span>
+                <br />
+                <span className="text-xl text-left text-[#00033d]">
+                  서울과학기술대학교 (2020.03 -)
+                </span>
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      ;
+    </>
   );
 }

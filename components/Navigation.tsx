@@ -1,7 +1,9 @@
 "use client";
-import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 interface NavigationProps {
   activeSection: string;
@@ -11,70 +13,82 @@ export default function Navigation({ activeSection }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { id: "hero", label: "Home" },
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
     { id: "contact", label: "Contact" },
   ];
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between py-4">
-          {/* 모바일 메뉴 버튼 */}
+    <nav className="relative bg-white border border-[#f2e6ee]">
+      {/* Desktop Navigation */}
+      <div className="hidden lg:flex w-full h-[79px] items-center justify-between px-[100px]">
+        <Link href={"#hero"} className="text-2xl font-black text-[#00033d]">
+          Somin Park
+        </Link>
+        <div className="flex gap-x-12">
+          {navItems.map((item) => (
+            <p key={item.id}>
+              <Link
+                href={`#${item.id}`}
+                className={`${
+                  activeSection === item.id
+                    ? "text-xl font-bold text-[#4d4f78]"
+                    : "text-xl text-[#4d4f78] hover:text-blue-600"
+                } transition-colors duration-200`}
+              >
+                {item.label}
+              </Link>
+            </p>
+          ))}
+        </div>
+        <div className="flex items-center gap-x-2">
+          <ThemeToggle />
+          <LanguageToggle />
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div className="lg:hidden w-full">
+        <div className="flex items-center justify-between px-6 h-[79px]">
+          <Link href={""} className="text-xl font-black text-[#00033d]">
+            Somin Park
+          </Link>
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2"
-            aria-label="메뉴"
+            onClick={toggleMenu}
+            className="text-[#4d4f78]"
+            aria-label="Toggle menu"
           >
-            {isMenuOpen ? "✕" : "☰"}
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-
-          {/* 데스크톱 메뉴 */}
-          <ul className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  className={`${
-                    activeSection === item.id
-                      ? "text-blue-600 dark:text-blue-400 font-semibold"
-                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                  } transition-colors duration-200`}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          {/* 테마/언어 토글 */}
-          <div className="flex items-center space-x-2">
-            <ThemeToggle />
-            <LanguageToggle />
-          </div>
         </div>
 
-        {/* 모바일 메뉴 */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <ul className="py-2">
+          <div className="absolute top-[79px] left-0 w-full bg-white border-t border-[#f2e6ee] py-4">
+            <div className="flex flex-col items-center gap-y-4">
               {navItems.map((item) => (
-                <li key={item.id}>
-                  <a
+                <p key={item.id}>
+                  <Link
                     href={`#${item.id}`}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block py-2 ${
+                    className={`${
                       activeSection === item.id
-                        ? "text-blue-600 dark:text-blue-400 font-semibold"
-                        : "text-gray-600 dark:text-gray-300"
-                    }`}
+                        ? "text-xl font-bold text-[#4d4f78]"
+                        : "text-xl text-[#4d4f78] hover:text-blue-600"
+                    } transition-colors duration-200`}
                   >
                     {item.label}
-                  </a>
-                </li>
+                  </Link>
+                </p>
               ))}
-            </ul>
+              <div className="flex items-center gap-x-2 mt-2">
+                <ThemeToggle />
+                <LanguageToggle />
+              </div>
+            </div>
           </div>
         )}
       </div>

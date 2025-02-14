@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 // Lazy load components
 const Hero = dynamic(() => import("@/components/Hero"));
 const About = dynamic(() => import("@/components/About"));
-const Portfolio = dynamic(() => import("@/components/Projects"));
+const Projects = dynamic(() => import("@/components/Projects"));
 const Contact = dynamic(() => import("@/components/Contact"));
 const Navigation = dynamic(() => import("@/components/Navigation"));
 const ScrollToTop = dynamic(() => import("@/components/ScrollToTop"), {
@@ -17,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "about", "portfolio", "contact"];
+      const sections = ["hero", "about", "projects", "contact"];
       const curPos = window.scrollY;
 
       sections.forEach((section) => {
@@ -48,10 +48,10 @@ export default function Home() {
         <section id="about" className="min-h-screen bg-gray-50">
           <About />
         </section>
-        <section id="portfolio" className="min-h-screen">
-          <Portfolio />
+        <section id="projects" className="min-h-screen">
+          <Projects />
         </section>
-        <section id="contact" className="min-h-screen bg-gray-50">
+        <section id="contact" className="min-h-[546px] bg-[#d9d9d9]">
           <Contact />
         </section>
         <ScrollToTop />

@@ -1,33 +1,37 @@
-// import Link from "next/link";
-// import profileData from "@/data/profile.json";
+import Link from "next/link";
+import profileData from "@/data/profile.json";
 
 export default function Contact() {
-  // const contact = profileData.contact;
+  const contact = profileData.contact;
 
   return (
     <>
       <div>
-        <div className="w-[1440px] h-[546px] bg-[#d9d9d9]" />
-        <div className="w-[1240px] h-[546px] relative overflow-hidden">
-          <div className="w-[855px] h-[206px]">
+        <div className="w-[1440px] bg-[#F2E6EE]" />
+        <div className="w-[1240px] relative overflow-hidden">
+          <div className="w-[855px] h-[230px]">
             <p className="absolute left-[617px] top-[57px] text-xl font-semibold text-right text-[#4d4f78]">
               About me
             </p>
             <p className="absolute left-[75px] top-[103px] text-xl text-left text-[#4d4f78]">
               <span className="text-xl text-left text-[#4d4f78]">
-                Tel. : 010-5598-8268
+                Tel. : {contact.phone}
               </span>
               <br />
               <span className="text-xl text-left text-[#4d4f78]">
-                Email : 0102262@gmail.com
+                <a href={`mailto:${contact.email}`}>Email : {contact.email}</a>
               </span>
               <br />
               <span className="text-xl text-left text-[#4d4f78]">
-                Github : https://github.com/Sminp
+                <Link href={contact.github} target="_blank">
+                  Github : {contact.github}
+                </Link>
               </span>
               <br />
               <span className="text-xl text-left text-[#4d4f78]">
-                Blog : https://aster-code.tistory.com/
+                <Link href={contact.blog} target="_blank">
+                  Blog : https://aster-code.tistory.com/
+                </Link>
               </span>
             </p>
             <p className="absolute left-[854px] top-[57px] text-xl font-semibold text-right text-[#4d4f78]">

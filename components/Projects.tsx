@@ -69,7 +69,7 @@ export default function Projects() {
               >
                 <path
                   d={Background[index]}
-                  fill="#F5F5F5"
+                  fill="#F2E6EE"
                   stroke="url(#paint0_linear_52_4)"
                 />
                 <defs>

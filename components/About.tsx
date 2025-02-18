@@ -7,7 +7,7 @@ export default function About() {
 
   return (
     <>
-      <div className="w-[1440px] h-[731px] relative overflow-hidden bg-white">
+      <div className="w-[1440px] h-[731px] relative overflow-hidden">
         <div className="w-[1040px] h-[531px] absolute left-[200px] top-[100px] rounded-[20px]">
           <p className="absolute left-[430px] top-0 text-[40px] font-semibold text-left text-[#00033d]">
             About me

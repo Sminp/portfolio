@@ -45,13 +45,13 @@ export default function Home() {
         <section id="hero" className="min-h-screen">
           <Hero />
         </section>
-        <section id="about" className="min-h-screen bg-gray-50">
+        <section id="about" className="min-h-screen">
           <About />
         </section>
         <section id="projects" className="min-h-screen">
           <Projects />
         </section>
-        <section id="contact" className="min-h-[546px] bg-[#d9d9d9]">
+        <section id="contact" className="min-h-[334px] bg-[#F2E6EE]">
           <Contact />
         </section>
         <ScrollToTop />

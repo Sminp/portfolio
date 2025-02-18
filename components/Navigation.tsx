@@ -23,8 +23,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
   };
 
   return (
-    <nav className="relative bg-white border border-[#f2e6ee]">
-      {/* Desktop Navigation */}
+    <nav className="relative border border-[#f2e6ee] dark:border-[#4d4f78]">
       <div className="hidden lg:flex w-full h-[79px] items-center justify-between px-[100px]">
         <Link href={"#hero"} className="text-2xl font-black text-[#00033d]">
           Somin Park

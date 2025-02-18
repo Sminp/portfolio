@@ -24,34 +24,22 @@ html {
   background: #555;
 }
 
-/* 원래 있던 global.css */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* 다크모드라는데 일단 넣어둠 버그 생길거 같음 */
-:root {
-  --foreground: #000000;
-  --background: #ffffff;
+  --foreground: #1a1a1a;
 }
 
 .dark {
-  --foreground: #ffffff;
   --background: #1a1a1a;
+  --foreground: #ededed;
+}
+
+/* 이렇게 하면 아이콘도 바꿔야됨 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a1a1a;
+    --foreground: #ededed;
+  }
 }
 
 body {

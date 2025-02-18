@@ -15,15 +15,17 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {project.title}
       </p>
       {/* map이용해서 수정 */}
-      <p className="absolute left-[259px] top-[525px] text-xl font-bold text-left text-black">
-        #JavaScript
-      </p>
-      <p className="absolute left-[410px] top-[525px] text-xl font-bold text-left text-black">
-        #JavaScript
-      </p>
-      <p className="absolute left-[561px] top-[525px] text-xl font-bold text-left text-black">
-        #JavaScript
-      </p>
+      {project.technologies.map((tech, index) => {
+        return (
+          <p
+            className="absolute top-[525px] text-xl font-bold text-left text-black"
+            key={index}
+            style={{ left: `${259 + 150 * index}px` }}
+          >
+            {tech}
+          </p>
+        );
+      })}
       <p className="absolute left-[841px] top-[191px] text-[32px] font-bold text-left text-black">
         {project.title}
       </p>
@@ -31,7 +33,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {project.description}
       </p>
       <p className="absolute left-[841px] top-[307px] text-2xl font-bold text-left text-black">
-        역할
+        기간
       </p>
       <p className="absolute left-[841px] top-[432px] text-xl text-left text-black">
         개인 포트폴리오 웹사이트
@@ -42,7 +44,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <p className="absolute left-[841px] top-[344px] text-xl text-left text-black">
         개인 포트폴리오 웹사이트
       </p>
-
       {project.github && (
         <Link
           href={project.github}

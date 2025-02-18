@@ -21,7 +21,7 @@ export interface Project {
   image: string;
   github?: string;
   demo?: string;
-  date: string;
+  date: string[];
 }
 
 export interface Projects {

@@ -1,10 +1,10 @@
 {
   "ko": {
-    "greeting": "안녕하세요!",
+    "greeting": "입니다",
     "projectBtn": "제가 만든 프로젝트예요"
   },
   "en": {
-    "greeting": "Hello!",
+    "greeting": "This is",
     "projectBtn": "My Projects"
   }
 }

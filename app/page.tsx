@@ -4,10 +4,10 @@ import dynamic from "next/dynamic";
 
 // Lazy load components
 const Hero = dynamic(() => import("@/components/Hero"));
-const About = dynamic(() => import("@/components/About"));
-const Projects = dynamic(() => import("@/components/Projects"));
+const About = dynamic(() => import("@/components/about/About"));
+const Projects = dynamic(() => import("@/components/project/Projects"));
 const Contact = dynamic(() => import("@/components/Contact"));
-const Navigation = dynamic(() => import("@/components/Navigation"));
+const Navigation = dynamic(() => import("@/components/navigation/Navigation"));
 const ScrollToTop = dynamic(() => import("@/components/ScrollToTop"), {
   ssr: false, // 클라이언트 사이드에서만 렌더링
 });

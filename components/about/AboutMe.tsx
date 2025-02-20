@@ -1,18 +1,13 @@
-// 나중에 분리시키자 수정
-import profileData from "@/data/profile.json";
-import useLanguageStore from "@/stores/useLanguageStore";
 import { useEffect, useState, useRef } from "react";
 
-export default function About() {
-  const language = useLanguageStore((state) => state.language);
-  const profile = profileData[language];
-  const [activeParagraphIndex, setActiveParagraphIndex] = useState(0);
-  const [activeCharIndex, setActiveCharIndex] = useState(0);
-  const aboutSectionRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number | null>(null);
+interface Profile {
+  intro: string[];
+}
 
-  // 총 활성화될 목표 글자 수를 저장하는 ref
-  const targetCharCountRef = useRef(0);
+export default function AboutMe({ profile }: { profile: Profile }) {
+  const [currentCharCount, setCurrentCharCount] = useState(0);
+  const aboutSectionRef = useRef<HTMLDivElement>(null);
+
   // 각 문단의 문자열 길이를 미리 계산
   const paragraphLengths = useRef(profile.intro.map((text) => text.length));
   // 총 문자열 길이
@@ -26,71 +21,38 @@ export default function About() {
       if (!aboutSection) return;
 
       const rect = aboutSection.getBoundingClientRect();
-      const isAboutVisible =
-        rect.top < window.innerHeight * 0.7 && rect.bottom > 0;
+      // 요소가 화면에 보이는지 확인
+      const isAboutVisible = rect.top < window.innerHeight && rect.bottom > 0;
 
       if (isAboutVisible) {
-        const scrollProgress = Math.min(
-          Math.max(
-            (window.innerHeight - rect.top) / (window.innerHeight * 0.8),
-            0
-          ),
-          1
-        );
+        const viewportHeight = window.innerHeight;
+        const progressRatio = 1 - rect.top / viewportHeight;
+        const progress = Math.max(0, Math.min(1, progressRatio));
 
-        targetCharCountRef.current = Math.floor(
-          totalCharCount.current * scrollProgress
-        );
+        // 보여줄 글자 수 계산
+        const visibleChars = Math.floor(totalCharCount.current * progress);
+        setCurrentCharCount(visibleChars);
       } else {
-        targetCharCountRef.current = 0;
+        setCurrentCharCount(0);
       }
-    };
-
-    const animateText = () => {
-      const target = targetCharCountRef.current;
-
-      const currentTotal =
-        activeParagraphIndex > 0
-          ? paragraphLengths.current
-              .slice(0, activeParagraphIndex)
-              .reduce((sum, len) => sum + len, 0) + activeCharIndex
-          : activeCharIndex;
-
-      if (currentTotal < target) {
-        const currentParagraphLength =
-          paragraphLengths.current[activeParagraphIndex];
-
-        if (activeCharIndex < currentParagraphLength - 1) {
-          setActiveCharIndex((prev) => prev + 1);
-        } else if (activeParagraphIndex < profile.intro.length - 1) {
-          setActiveParagraphIndex((prev) => prev + 1);
-          setActiveCharIndex(0);
-        }
-      } else if (currentTotal > target) {
-        if (activeCharIndex > 0) {
-          setActiveCharIndex((prev) => prev - 1);
-        } else if (activeParagraphIndex > 0) {
-          setActiveParagraphIndex((prev) => prev - 1);
-          setActiveCharIndex(
-            paragraphLengths.current[activeParagraphIndex - 1] - 1
-          );
-        }
-      }
-
-      animationRef.current = requestAnimationFrame(animateText);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    animationRef.current = requestAnimationFrame(animateText);
+    handleScroll(); // 초기 로드 시 실행
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
     };
-  }, [profile.intro, activeParagraphIndex, activeCharIndex]);
+  }, [profile.intro]);
+
+  // 주어진 문단 인덱스와 글자 인덱스까지의 총 글자 수 계산
+  const getTotalCharsUpTo = (paragraphIndex: number, charIndex: number) => {
+    let total = 0;
+    for (let i = 0; i < paragraphIndex; i++) {
+      total += paragraphLengths.current[i];
+    }
+    return total + charIndex;
+  };
 
   // 텍스트의 각 글자에 색상 적용
   const renderTextWithColorTransition = (
@@ -98,17 +60,14 @@ export default function About() {
     paragraphIndex: number
   ) => {
     return text.split("").map((char, charIndex) => {
-      // 이 문단이 활성화된 문단보다 앞에 있으면 모든 글자가 활성화
-      const isActive =
-        paragraphIndex < activeParagraphIndex ||
-        (paragraphIndex === activeParagraphIndex &&
-          charIndex <= activeCharIndex);
+      const totalCharIndex = getTotalCharsUpTo(paragraphIndex, charIndex);
+      const isActive = totalCharIndex < currentCharCount;
 
       return (
         <span
           key={charIndex}
           className={`transition-colors duration-100 ${
-            isActive ? "text-[#00033d]" : "text-gray-400"
+            isActive ? "" : "text-gray-400"
           }`}
         >
           {char}
@@ -118,17 +77,24 @@ export default function About() {
   };
 
   return (
-    <div className="w-[800px] h-[197px] absolute left-0 top-0">
-      <p className="absolute left-0 top-0 text-5xl font-semibold text-left text-[#00033d]">
-        About me
-      </p>
-      <p className="absolute left-0 top-[73px] text-[32px] text-left">
-        {profile.intro.map((text, index) => (
-          <span key={index} className="text-[32px] text-left block">
-            {renderTextWithColorTransition(text, index)}
-          </span>
-        ))}
-      </p>
-    </div>
+    <section className="min-h-screen w-full flex items-center justify-center">
+      <div className="max-w-4xl mx-auto px-4">
+        <h2
+          ref={aboutSectionRef}
+          className="text-[64px] font-semibold text-center mb-[30px]"
+        >
+          About me
+        </h2>
+        <div className="text-[32px] text-center">
+          {profile.intro.map((text, index) => (
+            <p key={index} className="block mb-6">
+              {renderTextWithColorTransition(text, index)}
+            </p>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
+
+// section 밑으로 가도 검정 글자 되도록 수정

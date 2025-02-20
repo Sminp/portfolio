@@ -9,7 +9,7 @@
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/username/portfolio",
       "demo": "",
-      "date": ["2025-02"]
+      "date": ["2025.02", "진행 중"]
     },
     {
       "id": 2,
@@ -35,7 +35,7 @@
     },
     {
       "id": 4,
-      "title": "UNO Game",
+      "title": "UNO",
       "description": "UNO 게임",
       "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
       "technologies": ["Python", "Pygame"],
@@ -66,7 +66,7 @@
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/username/portfolio",
       "demo": "",
-      "date": ["2025-02"]
+      "date": ["2025.02", "continuing"]
     },
     {
       "id": 2,
@@ -92,7 +92,7 @@
     },
     {
       "id": 4,
-      "title": "UNO Game",
+      "title": "UNO",
       "description": "UNO game",
       "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
       "technologies": ["Python", "Pygame"],

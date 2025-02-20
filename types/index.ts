@@ -41,11 +41,13 @@ export interface Profile {
     role: string;
     about: string;
     intro: string[];
+    education: object[];
   };
   en: {
     name: string;
     role: string;
     about: string;
     intro: string[];
+    education: object[];
   };
 }

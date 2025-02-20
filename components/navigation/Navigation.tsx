@@ -25,7 +25,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
   return (
     <nav className="relative border border-[#f2e6ee] dark:border-[#4d4f78]">
       <div className="hidden lg:flex w-full h-[79px] items-center justify-between px-[100px]">
-        <Link href={"#hero"} className="text-2xl font-black text-[#00033d]">
+        <Link href={"#hero"} className="text-2xl font-black">
           Somin Park
         </Link>
         <div className="flex gap-x-12">
@@ -35,8 +35,8 @@ export default function Navigation({ activeSection }: NavigationProps) {
                 href={`#${item.id}`}
                 className={`${
                   activeSection === item.id
-                    ? "text-xl font-bold text-[#4d4f78]"
-                    : "text-xl text-[#4d4f78] hover:text-blue-600"
+                    ? "text-xl font-bold"
+                    : "text-xl hover:text-blue-600"
                 } transition-colors duration-200`}
               >
                 {item.label}
@@ -53,14 +53,10 @@ export default function Navigation({ activeSection }: NavigationProps) {
       {/* Mobile Navigation */}
       <div className="lg:hidden w-full">
         <div className="flex items-center justify-between px-6 h-[79px]">
-          <Link href={""} className="text-xl font-black text-[#00033d]">
+          <Link href={""} className="text-xl font-black">
             Somin Park
           </Link>
-          <button
-            onClick={toggleMenu}
-            className="text-[#4d4f78]"
-            aria-label="Toggle menu"
-          >
+          <button onClick={toggleMenu} className="" aria-label="Toggle menu">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -75,8 +71,8 @@ export default function Navigation({ activeSection }: NavigationProps) {
                     href={`#${item.id}`}
                     className={`${
                       activeSection === item.id
-                        ? "text-xl font-bold text-[#4d4f78]"
-                        : "text-xl text-[#4d4f78] hover:text-blue-600"
+                        ? "text-xl font-bold"
+                        : "text-xl hover:text-blue-600"
                     } transition-colors duration-200`}
                   >
                     {item.label}

@@ -19,7 +19,7 @@ export default function Hero() {
               {profile.about}
             </span>
             <br />
-            <span className="text-[64px] font-bold text-left text-[#00033d]">
+            <span className="text-[64px] font-bold text-left">
               {profile.role}
               {general.greeting}
             </span>

@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import Image from "next/image";
-import projectBox from "projectBox.svg";
 
 export default function Projects() {
   const language = useLanguageStore((state) => state.language);
@@ -46,7 +45,7 @@ export default function Projects() {
           <Image
             src={`${
               process.env.NODE_ENV === "production" ? "/portfolio" : ""
-            }/${projectBox}`}
+            }/projectBox.svg`}
             alt="projectBox"
             width={1080}
             height={550}

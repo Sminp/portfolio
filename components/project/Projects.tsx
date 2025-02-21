@@ -46,7 +46,7 @@ export default function Projects() {
           <Image
             src={`${
               process.env.NODE_ENV === "production" ? "/portfolio" : ""
-            }${projectBox}`}
+            }/${projectBox}`}
             alt="projectBox"
             width={1080}
             height={550}

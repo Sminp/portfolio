@@ -27,7 +27,7 @@ export default function Hero() {
           <Image
             src={`${
               process.env.NODE_ENV === "production" ? "/portfolio" : ""
-            }${heroImg}`}
+            }/${heroImg}`}
             alt="hero"
             width={280}
             height={280}

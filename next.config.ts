@@ -2,8 +2,8 @@ import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export", // 정적 내보내기 설정
-  basePath: "/portfolio", // GitHub 저장소 이름과 동일하게 설정
-  assetPrefix: "/portfolio/", // 자산 접두사 설정
+  basePath: process.env.NODE_ENV === "production" ? "/portfolio" : "", // 개발 환경에서 basePath를 빈 값으로 설정
+  assetPrefix: process.env.NODE_ENV === "production" ? "/portfolio/" : "", // 개발 환경에서 assetPrefix를 빈 값으로 설정
   images: {
     unoptimized: true, // GitHub Pages를 위한 이미지 최적화 비활성화
   },

@@ -44,7 +44,9 @@ export default function Projects() {
         <div className="w-[1080px] h-[531px] relative">
           {/* 고정된 프로젝트 박스 */}
           <Image
-            src={projectBox}
+            src={`${
+              process.env.NODE_ENV === "production" ? "/portfolio" : ""
+            }${projectBox}`}
             alt="projectBox"
             width={1080}
             height={550}

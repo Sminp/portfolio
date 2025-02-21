@@ -16,7 +16,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <Image
           width={502}
           height={350}
-          src={`/projects/${project.title}.png`}
+          src={`${
+            process.env.NODE_ENV === "production" ? "/portfolio" : ""
+          }/projects/${project.title}.png`}
           alt={project.title}
         />
       </div>

@@ -3,7 +3,7 @@ name: Deploy Next.js to GitHub Pages
 on:
   push:
     branches:
-      - main # main 브랜치에 푸시할 때 실행
+      - main # main 브랜치에 push될 때 배포
 
 permissions:
   contents: write
@@ -23,13 +23,13 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build & Export Next.js
-        run: npm run export
+      - name: Build Next.js App
+        run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          branch: gh-pages
+          folder: out

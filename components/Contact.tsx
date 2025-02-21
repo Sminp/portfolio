@@ -1,3 +1,4 @@
+// 박스 크기 5xl
 import Link from "next/link";
 import profileData from "@/data/profile.json";
 
@@ -5,13 +6,13 @@ export default function Contact() {
   const contact = profileData.contact;
 
   return (
-    <div className="w-[1440px] h-[334px] relative overflow-hidden bg-[#f2e6ee]">
-      <div className="w-[1040px] h-[334px] absolute left-[200px] top-0 overflow-hidden">
-        <div className="w-[930px] h-[215px]">
-          <p className="w-[97.89px] absolute left-[589.54px] top-[57px] text-xl font-semibold text-right text-[#4d4f78]">
-            About me
+    <div className="w-screen h-[334px] bg-[#f2e6ee] flex items-center justify-center">
+      <div className="w-[1020px] grid grid-cols-2">
+        <div className="flex flex-col">
+          <p className=" text-[32px] font-semibold text-left text-[#4d4f78]">
+            Contact
           </p>
-          <p className="w-[358.95px] absolute left-0 top-[105px] text-xl text-left text-[#4d4f78]">
+          <p className="w-[358.95px]text-xl text-left text-[#4d4f78]">
             <span className="w-[358.95px] text-xl text-left text-[#4d4f78]">
               Tel. : {contact.phone}
             </span>
@@ -32,13 +33,15 @@ export default function Contact() {
               </Link>
             </span>
           </p>
-          <p className="w-[82.67px] absolute left-[847.33px] top-[57px] text-xl font-semibold text-right text-[#4d4f78]">
+        </div>
+        <div className="flex flex-row justify-around items-start">
+          <p className="w-[97.89px] text-xl font-semibold text-right text-[#4d4f78]">
+            About me
+          </p>
+          <p className="w-[82.67px] text-xl font-semibold text-right text-[#4d4f78]">
             Projects
           </p>
         </div>
-        <p className="absolute left-0 top-[50px] text-[32px] font-semibold text-left text-[#4d4f78]">
-          Contact
-        </p>
       </div>
     </div>
   );

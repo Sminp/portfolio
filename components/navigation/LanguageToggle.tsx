@@ -1,4 +1,3 @@
-"use client";
 import { useLanguageStore } from "@/stores/useLanguageStore";
 import { motion } from "framer-motion";
 

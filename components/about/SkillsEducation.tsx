@@ -7,19 +7,21 @@ interface Profile {
     school: string;
     major: string;
     degree: string;
+    date: string[];
   }[];
 }
 
 export default function SkillsEducation({ profile }: { profile: Profile }) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
+  const divRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(divRef, { once: false, amount: 0.3 });
   const ThemeState = useThemeStore((state) => state);
+  const { school, major, degree, date } = profile.education[0];
 
   return (
-    <section
+    <div
       id="skills-education"
-      ref={sectionRef}
-      className="min-h-screen w-full relative flex flex-col items-center justify-start py-20"
+      ref={divRef}
+      className="min-h-screen w-screen relative flex flex-col items-center justify-start"
     >
       {/* gap-[60px] 추가 */}
       <div className="max-w-7xl w-full flex flex-row items-center justify-center gap-[60px]">
@@ -61,19 +63,21 @@ export default function SkillsEducation({ profile }: { profile: Profile }) {
             Education
           </h2>
           <div className="text-xl text-[#00033d]">
-            <p>{profile.education[0].school}</p>
+            <p>{school}</p>
             <p>
-              {profile.education[0].major} {profile.education[0].degree}
+              {major} {degree}
             </p>
-            <p>2020.03 - </p>
+            <p>
+              {date[0]} - {date[1] === "진행 중" ? "" : date[1]}
+            </p>
           </div>
         </motion.div>
       </div>
       {ThemeState.theme === "light" ? (
-        <div className="absolute bottom-0 w-full h-[153px] bg-gradient-to-b from-white to-[#f2e6ee]" />
+        <div className="absolute bottom-0 w-screen h-1/4 bg-gradient-to-b from-white to-[#f2e6ee]" />
       ) : (
-        <div className="absolute bottom-0 w-full h-[153px] bg-gradient-to-b from-[#1a1a1a] to-[#f2e6ee]" />
+        <div className="absolute bottom-0 w-screen h-1/4 bg-gradient-to-b from-[#1a1a1a] to-[#f2e6ee]" />
       )}
-    </section>
+    </div>
   );
 }

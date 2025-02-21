@@ -51,7 +51,7 @@ export default function Home() {
         <section id="projects" className="min-h-screen">
           <Projects />
         </section>
-        <section id="contact" className="min-h-[334px] bg-[#F2E6EE]">
+        <section id="contact" className="min-h-[334px]">
           <Contact />
         </section>
         <ScrollToTop />

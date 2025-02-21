@@ -77,23 +77,21 @@ export default function AboutMe({ profile }: { profile: Profile }) {
   };
 
   return (
-    <section className="min-h-screen w-full flex items-center justify-center">
-      <div className="max-w-4xl mx-auto px-4">
-        <h2
-          ref={aboutSectionRef}
-          className="text-[64px] font-semibold text-center mb-[30px]"
-        >
-          About me
-        </h2>
-        <div className="text-[32px] text-center">
-          {profile.intro.map((text, index) => (
-            <p key={index} className="block mb-6">
-              {renderTextWithColorTransition(text, index)}
-            </p>
-          ))}
-        </div>
+    <div className="flex flex-col items-center justify-center">
+      <h2
+        ref={aboutSectionRef}
+        className="text-5xl font-semibold text-center m-6"
+      >
+        About me
+      </h2>
+      <div className="text-4xl text-center">
+        {profile.intro.map((text, index) => (
+          <p key={index} className="block m-4">
+            {renderTextWithColorTransition(text, index)}
+          </p>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }
 

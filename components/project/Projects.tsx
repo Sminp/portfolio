@@ -1,5 +1,3 @@
-"use client";
-
 import projectData from "@/data/projects.json";
 import useLanguageStore from "@/stores/useLanguageStore";
 import { useState, useEffect } from "react";
@@ -36,7 +34,7 @@ export default function Projects() {
 
   return (
     <div
-      className="w-[1440px] h-[731px] relative bg-[#f2e6ee]"
+      className="w-screen h-full relative bg-[#f2e6ee]"
       style={{ height: `${TOTAL_HEIGHT}px` }}
     >
       <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">

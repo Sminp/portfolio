@@ -9,8 +9,12 @@ export default function About() {
 
   return (
     <>
-      <AboutMe profile={profile} />
-      <SkillsEducation profile={profile} />
+      <section id="aboutMe" className="min-h-screen">
+        <AboutMe profile={profile} />
+      </section>
+      <section id="skillsEducation" className="min-h-screen">
+        <SkillsEducation profile={profile} />
+      </section>
     </>
   );
 }

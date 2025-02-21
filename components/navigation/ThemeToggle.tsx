@@ -1,4 +1,3 @@
-"use client";
 import { useThemeStore } from "@/stores/useThemeStore";
 import { motion } from "framer-motion";
 

@@ -19,7 +19,7 @@
     "name": "박소민",
     "role": "프론트엔드 개발자",
 
-    "about": "공감과 배려를 중요시 하는",
+    "about": "공감과 배려를 중요시 여기는",
     "intro": [
       "모든 프로젝트의 UX/UI를 중요하게 생각해요",
       "연령층, 국적에 관계 없이 누구나 친해질 수 있어요",
@@ -30,7 +30,7 @@
         "school": "서울과학기술대학교",
         "degree": "학사",
         "major": "컴퓨터공학",
-        "date": ["2020.03"]
+        "date": ["2020.03", "진행 중"]
       }
     ]
   },
@@ -48,7 +48,7 @@
         "school": "Seoul University of Science and Technology",
         "degree": "Bachelor",
         "major": "Computer Science",
-        "date": ["2020.03"]
+        "date": ["2020.03", "진행 중"]
       }
     ]
   }

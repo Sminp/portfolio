@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import Image from "next/image";
-import projectBox from "@/public/projectBox.svg";
+import projectBox from "projectBox.svg";
 
 export default function Projects() {
   const language = useLanguageStore((state) => state.language);

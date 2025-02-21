@@ -3,7 +3,7 @@ import useLanguageStore from "@/stores/useLanguageStore";
 import profileData from "@/data/profile.json";
 import generalData from "@/data/general.json";
 import Image from "next/image";
-import heroImg from "@/public/hero.png";
+import heroImg from "hero.png";
 
 export default function Hero() {
   const language = useLanguageStore((state) => state.language);

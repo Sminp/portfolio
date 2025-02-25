@@ -2,7 +2,6 @@ import useLanguageStore from "@/stores/useLanguageStore";
 import profileData from "@/data/profile.json";
 import generalData from "@/data/general.json";
 import Image from "next/image";
-import ModelViewer from "./ModelViewer";
 
 export default function Hero() {
   const language = useLanguageStore((state) => state.language);
@@ -30,7 +29,6 @@ export default function Hero() {
         height={288}
         className="object-cover"
       />
-      <ModelViewer />
     </div>
   );
 }

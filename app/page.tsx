@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
 // Lazy load components
-const Hero = dynamic(() => import("@/components/Hero"));
+const Hero = dynamic(() => import("@/components/hero/Hero"));
 const About = dynamic(() => import("@/components/about/About"));
 const Projects = dynamic(() => import("@/components/project/Projects"));
 const Contact = dynamic(() => import("@/components/Contact"));

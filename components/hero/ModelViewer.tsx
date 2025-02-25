@@ -7,7 +7,7 @@ import * as THREE from "three";
 const Model = () => {
   const [modelLoaded, setModelLoaded] = useState(false);
   const { scene } = useGLTF("/3d/scene.gltf");
-  const modelRef = useRef<THREE.Group>();
+  const modelRef = useRef<THREE.Group | null>(null);
   const [autoRotate, setAutoRotate] = useState(false);
 
   // 모델 로드 후 처리

@@ -20,7 +20,6 @@ export interface Project {
   technologies: string[];
   image: string;
   github?: string;
-  demo?: string;
   date: string[];
 }
 

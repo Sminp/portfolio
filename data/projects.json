@@ -1,115 +1,105 @@
 {
   "ko": [
     {
-      "id": 1,
+      "id": 0,
       "title": "Portfolio",
       "description": "개인 포트폴리오 웹사이트",
       "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
       "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/username/portfolio",
-      "demo": "",
       "date": ["2025.02", "진행 중"]
     },
     {
-      "id": 2,
+      "id": 1,
       "title": "OPTT",
       "description": "OTT 추천 웹사이트",
       "longDescription": "드래그 앤 드롭 기능과 로컬 스토리지를 활용한 데이터 저장 기능을 갖춘 Todo 애플리케이션입니다.",
       "technologies": ["React", "JavaScript", "Redux", "Express"],
       "image": "/projects/todo.jpg",
       "github": "https://github.com/kny0716/OPTT.git",
-      "demo": "",
       "date": ["2023.10", "2023.12"]
     },
     {
-      "id": 3,
+      "id": 2,
       "title": "Dinary",
       "description": "감정 일기 요약 웹사이트",
       "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
       "technologies": ["React", "JavaScript", "Styled Components"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/Sminp/Dinary.git",
-      "demo": "",
       "date": ["2023.02", "2023.12"]
     },
     {
-      "id": 4,
+      "id": 3,
       "title": "UNO",
       "description": "UNO 게임",
       "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
       "technologies": ["Python", "Pygame"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/Sminp/Softwareengineering.git",
-      "demo": "",
       "date": ["2023.03", "2023.05"]
     },
     {
-      "id": 5,
+      "id": 4,
       "title": "CookIndoor",
       "description": "요리 만들기 게임",
       "longDescription": "드래그 앤 드롭 기능과 로컬 스토리지를 활용한 데이터 저장 기능을 갖춘 Todo 애플리케이션입니다.",
       "technologies": ["Python", "Pygame", "OpenCV"],
       "image": "/projects/todo.jpg",
       "github": "https://github.com/Seeyou2000/OpenSourceProject.git",
-      "demo": "",
       "date": ["2022.11", "2022.12"]
     }
   ],
   "en": [
     {
-      "id": 1,
+      "id": 0,
       "title": "Portfolio",
       "description": "Individual portfolio website",
       "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
       "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/username/portfolio",
-      "demo": "",
       "date": ["2025.02", "continuing"]
     },
     {
-      "id": 2,
+      "id": 1,
       "title": "OPTT",
       "description": "OTT recommendation website",
       "longDescription": "드래그 앤 드롭 기능과 로컬 스토리지를 활용한 데이터 저장 기능을 갖춘 Todo 애플리케이션입니다.",
       "technologies": ["React", "JavaScript", "Redux", "Express"],
       "image": "/projects/todo.jpg",
       "github": "https://github.com/kny0716/OPTT.git",
-      "demo": "",
       "date": ["2023.10", "2023.12"]
     },
     {
-      "id": 3,
+      "id": 2,
       "title": "Dinary",
       "description": "Emotion diary summary website",
       "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
       "technologies": ["React", "JavaScript", "Styled Components"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/Sminp/Dinary.git",
-      "demo": "",
       "date": ["2023.02", "2023.12"]
     },
     {
-      "id": 4,
+      "id": 3,
       "title": "UNO",
       "description": "UNO game",
       "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
       "technologies": ["Python", "Pygame"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/Sminp/Softwareengineering.git",
-      "demo": "",
       "date": ["2023.03", "2023.05"]
     },
     {
-      "id": 5,
+      "id": 4,
       "title": "CookIndoor",
       "description": "Cooking game",
       "longDescription": "드래그 앤 드롭 기능과 로컬 스토리지를 활용한 데이터 저장 기능을 갖춘 Todo 애플리케이션입니다.",
       "technologies": ["Python", "Pygame", "OpenCV"],
       "image": "/projects/todo.jpg",
       "github": "https://github.com/Seeyou2000/OpenSourceProject.git",
-      "demo": "",
       "date": ["2022.11", "2022.12"]
     }
   ]

@@ -10,7 +10,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     // 초기 로딩 애니메이션을 위한 타이머
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -29,7 +29,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Portfolio
+            Somin Park
           </motion.div>
         </motion.div>
       ) : (

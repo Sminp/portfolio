@@ -34,7 +34,7 @@ export default function Projects() {
 
   return (
     <div
-      className="w-screen h-full relative bg-[#f2e6ee]"
+      className="w-screen h-full relative"
       style={{ height: `${TOTAL_HEIGHT}px` }}
     >
       <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">

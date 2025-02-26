@@ -1,6 +1,5 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import useThemeStore from "@/stores/useThemeStore"; // 더 쉬운 방법이 있을거야 수정
 
 interface Profile {
   education: {
@@ -14,7 +13,6 @@ interface Profile {
 export default function SkillsEducation({ profile }: { profile: Profile }) {
   const divRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(divRef, { once: false, amount: 0.3 });
-  const ThemeState = useThemeStore((state) => state);
   const { school, major, degree, date } = profile.education[0];
 
   return (
@@ -73,11 +71,6 @@ export default function SkillsEducation({ profile }: { profile: Profile }) {
           </div>
         </motion.div>
       </div>
-      {ThemeState.theme === "light" ? (
-        <div className="absolute bottom-0 w-screen h-1/4 bg-gradient-to-b from-white to-[#f2e6ee]" />
-      ) : (
-        <div className="absolute bottom-0 w-screen h-1/4 bg-gradient-to-b from-[#1a1a1a] to-[#f2e6ee]" />
-      )}
     </div>
   );
 }

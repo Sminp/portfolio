@@ -1,9 +1,8 @@
-"use client";
+import { useState } from "react";
+import { Menu, X } from "lucide-react"; // 나중에 바꿀 수 있음 수정
+import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import Link from "next/link";
 
 interface NavigationProps {
   activeSection: string;

@@ -1,9 +1,9 @@
-import useLanguageStore from "@/stores/useLanguageStore";
-import profileData from "@/data/profile.json";
-import generalData from "@/data/general.json";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import ModelViewer from "./ModelViewer";
-import { useState, useEffect } from "react";
+import generalData from "@/data/general.json";
+import profileData from "@/data/profile.json";
+import useLanguageStore from "@/stores/useLanguageStore";
 
 export default function Hero() {
   const language = useLanguageStore((state) => state.language);

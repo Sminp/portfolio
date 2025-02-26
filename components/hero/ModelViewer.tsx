@@ -1,12 +1,12 @@
 import { useEffect, useState, useRef } from "react";
+import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
-import * as THREE from "three";
 
 // 환경에 따라 GLTF 모델 경로 설정
 const MODEL_PATH = `${
   process.env.NODE_ENV === "production" ? "/portfolio" : ""
-}/3d/scene.gltf`;
+}/model/scene.gltf`;
 
 const Model = () => {
   const [modelLoaded, setModelLoaded] = useState(false);

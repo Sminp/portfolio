@@ -1,11 +1,12 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
 // Lazy load components
 const Hero = dynamic(() => import("@/components/hero/Hero"));
-const About = dynamic(() => import("@/components/about/About"));
-const Projects = dynamic(() => import("@/components/project/Projects"));
+const About = dynamic(() => import("@/components/about/AboutContainer"));
+const Projects = dynamic(() => import("@/components/project/ProjectContainer"));
 const Contact = dynamic(() => import("@/components/Contact"));
 const Navigation = dynamic(() => import("@/components/navigation/Navigation"));
 const ScrollToTop = dynamic(() => import("@/components/ScrollToTop"), {

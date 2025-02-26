@@ -1,5 +1,5 @@
-import { useThemeStore } from "@/stores/useThemeStore";
 import { motion } from "framer-motion";
+import { useThemeStore } from "@/stores/useThemeStore";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useThemeStore();

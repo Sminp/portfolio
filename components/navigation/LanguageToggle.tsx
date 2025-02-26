@@ -1,5 +1,5 @@
-import { useLanguageStore } from "@/stores/useLanguageStore";
 import { motion } from "framer-motion";
+import { useLanguageStore } from "@/stores/useLanguageStore";
 
 export default function LanguageToggle() {
   const { language, setLanguage } = useLanguageStore();

@@ -24,7 +24,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
   return (
     <nav className="relative  w-screen border border-[#f2e6ee] dark:border-[#4d4f78]">
       <div className="lg:flex h-[79px] items-center justify-between px-[100px]">
-        <Link href={"#hero"} className="text-2xl font-black">
+        <Link href={"#hero"} className="text-2xl text-[#0033FF] font-black">
           Somin Park
         </Link>
         <div className="flex gap-x-12">
@@ -52,7 +52,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
       {/* Mobile Navigation */}
       <div className="lg:hidden w-screen">
         <div className="flex items-center justify-between px-6 h-[79px]">
-          <Link href={""} className="text-xl font-black">
+          <Link href={""} className="text-xl text-[#0033FF] font-black">
             Somin Park
           </Link>
           <button onClick={toggleMenu} className="" aria-label="Toggle menu">

@@ -12,17 +12,16 @@ interface Profile {
 
 export default function SkillsEducation({ profile }: { profile: Profile }) {
   const divRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(divRef, { once: false, amount: 0.3 });
-  const { school, major, degree, date } = profile.education[0];
+  const isInView = useInView(divRef, { once: false, amount: 0.4 });
+  const { school, major, degree, date } = profile.education[0]; // 대학교만 표시
 
   return (
-    <div
-      id="skills-education"
-      ref={divRef}
-      className="min-h-screen w-screen relative flex flex-col items-center justify-start"
-    >
-      {/* gap-[60px] 추가 */}
-      <div className="max-w-7xl w-full flex flex-row items-center justify-center gap-[60px]">
+    <div className="h-screen w-screen flex flex-col items-center justify-center">
+      {/* gap-[50px] 추가 */}
+      <div
+        ref={divRef}
+        className="max-w-7xl w-full flex flex-row items-center justify-center gap-[50px]"
+      >
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{
@@ -30,7 +29,7 @@ export default function SkillsEducation({ profile }: { profile: Profile }) {
             y: isInView ? 0 : 50,
           }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-[490px] h-[300px] rounded-[20px] bg-white p-8 shadow-lg"
+          className="w-[595px] h-[400px] rounded-[20px] bg-white shadow-lg p-[50px]"
         >
           <h2 className="text-[32px] font-semibold text-[#00033d] mb-6">
             Skills
@@ -55,7 +54,7 @@ export default function SkillsEducation({ profile }: { profile: Profile }) {
             y: isInView ? 0 : 50,
           }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-[490px] h-[300px] rounded-[20px] bg-white p-8 shadow-lg"
+          className="w-[595px] h-[400px] rounded-[20px] bg-white shadow-lg p-[50px]"
         >
           <h2 className="text-[32px] font-semibold text-[#00033d] mb-6">
             Education

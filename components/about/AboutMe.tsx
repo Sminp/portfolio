@@ -6,7 +6,6 @@ interface Profile {
 
 export default function AboutMe({ profile }: { profile: Profile }) {
   const [currentCharCount, setCurrentCharCount] = useState(0);
-  const aboutSectionRef = useRef<HTMLDivElement>(null);
 
   // 각 문단의 문자열 길이를 미리 계산
   const paragraphLengths = useRef(profile.intro.map((text) => text.length));
@@ -17,24 +16,44 @@ export default function AboutMe({ profile }: { profile: Profile }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const aboutSection = aboutSectionRef.current;
+      const aboutSection = document.getElementById("about-me");
       if (!aboutSection) return;
 
       const rect = aboutSection.getBoundingClientRect();
-      // 요소가 화면에 보이는지 확인
-      const isAboutVisible = rect.top < window.innerHeight && rect.bottom > 0;
+      const viewportHeight = window.innerHeight;
 
-      if (isAboutVisible) {
-        const viewportHeight = window.innerHeight;
-        const progressRatio = 1 - rect.top / viewportHeight;
-        const progress = Math.max(0, Math.min(1, progressRatio));
-
-        // 보여줄 글자 수 계산
-        const visibleChars = Math.floor(totalCharCount.current * progress);
-        setCurrentCharCount(visibleChars);
-      } else {
+      // 1. bottom이 화면에 들어오기 전까지는 모든 글자가 회색
+      if (rect.bottom >= viewportHeight) {
         setCurrentCharCount(0);
+        return;
       }
+
+      // 2. bottom이 화면 bottom의 50% 위치에 도달하면 모든 글자가 검정색
+      const bottomThreshold = viewportHeight * 0.5;
+      if (rect.bottom <= bottomThreshold) {
+        setCurrentCharCount(totalCharCount.current);
+        return;
+      }
+
+      // 그 사이에 있을 때는 스크롤 위치에 따라 글자 색상 점진적 변경
+      // bottom이 화면에 보이기 시작한 시점부터 하단 threshold까지의 진행률 계산
+      const startPosition = viewportHeight; // bottom이 화면에 보이기 시작하는 위치
+      const endPosition = bottomThreshold; // 모든 글자가 검정색이 되는 위치
+
+      const totalScrollDistance = startPosition - endPosition;
+      const currentScrollPosition = rect.bottom;
+
+      const progressRatio = Math.max(
+        0,
+        Math.min(
+          1,
+          (startPosition - currentScrollPosition) / totalScrollDistance
+        )
+      );
+
+      // 보여줄 글자 수 계산
+      const visibleChars = Math.floor(totalCharCount.current * progressRatio);
+      setCurrentCharCount(visibleChars);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -77,14 +96,9 @@ export default function AboutMe({ profile }: { profile: Profile }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <h2
-        ref={aboutSectionRef}
-        className="text-5xl font-semibold text-center m-6"
-      >
-        About me
-      </h2>
-      <div className="text-4xl text-center">
+    <div className="h-screen flex flex-col items-center justify-center">
+      <h2 className="text-5xl font-semibold text-center m-6">About me</h2>
+      <div id="about-me" className="text-4xl text-center">
         {profile.intro.map((text, index) => (
           <p key={index} className="block m-4">
             {renderTextWithColorTransition(text, index)}
@@ -94,5 +108,3 @@ export default function AboutMe({ profile }: { profile: Profile }) {
     </div>
   );
 }
-
-// section 밑으로 가도 검정 글자 되도록 수정

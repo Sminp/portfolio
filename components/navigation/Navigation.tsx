@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react"; // 나중에 바꿀 수 있음 수정
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
@@ -10,6 +10,26 @@ interface NavigationProps {
 
 export default function Navigation({ activeSection }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < lastScrollY) {
+        setIsVisible(true); // 스크롤을 올릴 때 네비게이션 표시
+      } else {
+        setIsVisible(false); // 스크롤을 내릴 때 네비게이션 숨김
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const navItems = [
     { id: "about", label: "About" },
@@ -17,12 +37,12 @@ export default function Navigation({ activeSection }: NavigationProps) {
     { id: "contact", label: "Contact" },
   ];
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <nav className="relative  w-screen border border-[#f2e6ee] dark:border-[#4d4f78]">
+    <nav
+      className={`fixed top-0 left-0 w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-transform duration-300 z-50 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="lg:flex h-[79px] items-center justify-between px-[100px]">
         <Link href={"#hero"} className="text-2xl text-[#0033FF] font-black">
           Somin Park
@@ -52,7 +72,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
       {/* Mobile Navigation */}
       <div className="lg:hidden w-screen">
         <div className="flex items-center justify-between px-6 h-[79px]">
-          <Link href={""} className="text-xl text-[#0033FF] font-black">
+          <Link href={"#hero"} className="text-xl text-[#0033FF] font-black">
             Somin Park
           </Link>
           <button onClick={toggleMenu} className="" aria-label="Toggle menu">

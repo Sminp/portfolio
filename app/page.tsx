@@ -42,7 +42,7 @@ export default function Home() {
       <header>
         <Navigation activeSection={activeSection} />
       </header>
-      <main className="min-h-screen">
+      <main className="min-h-screen relative">
         <section id="hero" className="min-h-screen">
           <Hero />
         </section>

@@ -2,25 +2,35 @@ import { useState, useEffect } from "react";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isRelativeToContact, setIsRelativeToContact] = useState(false);
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const contactBox = document.getElementById("contact-box");
+
+      // 300px 이상 스크롤되면 버튼 표시
+      setIsVisible(scrollY > 300);
+
+      if (contactBox) {
+        const contactBoxRect = contactBox.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // contact-box가 화면에 보이기 시작하면 relative 포지션으로 변경
+        if (contactBoxRect.top < windowHeight) {
+          setIsRelativeToContact(true);
+        } else {
+          setIsRelativeToContact(false);
+        }
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -28,8 +38,17 @@ export default function ScrollToTop() {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-50"
+          className="bg-[#0033FF] text-white p-3 rounded-full shadow-lg hover:bg-[#0600AB] transition-colors z-50"
           aria-label="맨 위로 이동"
+          style={{
+            position: isRelativeToContact ? "absolute" : "fixed",
+            bottom: "2rem",
+            right: "2rem",
+            ...(isRelativeToContact && {
+              bottom: "26rem",
+              position: "absolute",
+            }),
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

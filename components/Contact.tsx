@@ -7,7 +7,10 @@ export default function Contact() {
 
   return (
     <div className="w-screen h-[534px] flex flex-col justify-end">
-      <div className="w-screen h-[334px] flex items-center justify-center  border-t border-[#4D4F78]">
+      <div
+        id="contact-box"
+        className="w-screen h-[334px] flex items-center justify-center  border-t border-[#4D4F78]"
+      >
         <div className="w-[1240px] h-full grid grid-cols-2 pt-[50px]">
           <div className="flex flex-col">
             <p className=" text-[32px] font-semibold text-left pb-[10px]">

@@ -23,7 +23,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="relative flex flex-col items-center justify-center">
       <div className="flex min-h-screen w-screen flex flex-row items-center justify-center">
         <p className="text-6xl font-bold text-left mb-10 -mr-10">
           <strong className="bg-gradient-to-r from-[#977DFF] via-[#0033FF] to-[#0600AB] bg-[linear-gradient(-81deg,#977DFF_0%,#0033FF_80%,#0600AB_100%)] bg-clip-text text-transparent">
@@ -53,7 +53,7 @@ export default function Hero() {
       <div className="absolute bottom-0 flex flex-col items-center">
         <p className="text-lg text-black dark:text-white mb-2">Scroll</p>
         <div className="w-[1px] h-[70px] relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-black animate-scroll" />
+          <div className="absolute top-0 left-0 w-full h-full animate-scroll" />
         </div>
       </div>
 
@@ -73,6 +73,9 @@ export default function Hero() {
           width: 100%;
           background: black;
           animation: scrollAnimation 1.5s infinite linear;
+        }
+        :global(.dark) .animate-scroll {
+          background: white;
         }
       `}</style>
     </div>

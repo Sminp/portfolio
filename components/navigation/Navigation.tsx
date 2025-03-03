@@ -39,7 +39,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-transform duration-300 z-50 ${
+      className={`fixed top-0 left-0 w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-all duration-300 z-50 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -82,7 +82,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="absolute top-[79px] left-0 w-full bg-white border-t border-[#f2e6ee] py-4">
+          <div className="absolute top-[79px] left-0 w-full bg-white dark:bg-gray-900 border-t border-[#f2e6ee] dark:border-gray-700 py-4 transition-colors duration-300">
             <div className="flex flex-col items-center gap-y-4">
               {navItems.map((item) => (
                 <p key={item.id}>

@@ -1,26 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-interface ProjectIntroProps {
-  onComplete: () => void; // 애니메이션 완료 후 호출될 콜백
-}
-
-/**
- * 프로젝트 소개 섹션 컴포넌트
- *
- * 화면 중앙에 "Projects" 타이틀과 세로선을 표시하고,
- * 스크롤에 따라 선이 확장되며 박스가 아래로 이동하여 다음 섹션으로 전환
- *
- * @param onComplete 애니메이션 완료 후 두 번째 섹션으로 전환 시 호출되는 콜백 함수
- */
-export default function ProjectIntro({ onComplete }: ProjectIntroProps) {
+export default function ProjectIntro() {
   // 섹션 ref 설정
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  // 애니메이션 상태 관리
-  const [animationProgress, setAnimationProgress] = useState(0);
-  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
-  console.log(animationProgress);
 
   // 스크롤 위치에 따른 애니메이션 진행도 계산
   const { scrollYProgress } = useScroll({
@@ -55,21 +38,6 @@ export default function ProjectIntro({ onComplete }: ProjectIntroProps) {
     [0, 0.3, 0.7, 0.9],
     ["0%", "0%", "50%", "100%"] // 스크롤이 진행됨에 따라 박스가 아래로 이동
   );
-
-  // 스크롤 위치에 따른 애니메이션 진행 상태 업데이트
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on("change", (value) => {
-      setAnimationProgress(value);
-
-      // 애니메이션이 80% 이상 진행되었을 때 완료 상태로 설정하고 콜백 호출
-      if (value >= 0.8 && !isAnimationComplete) {
-        setIsAnimationComplete(true);
-        onComplete();
-      }
-    });
-
-    return () => unsubscribe();
-  }, [scrollYProgress, onComplete, isAnimationComplete]);
 
   return (
     <div

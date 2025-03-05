@@ -39,7 +39,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-all duration-300 z-50 ${
+      className={`fixed top-0 left-0 w-full bg-white/75 backdrop-blur-sm dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-all duration-300 z-50 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >

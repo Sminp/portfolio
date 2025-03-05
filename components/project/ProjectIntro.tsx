@@ -43,13 +43,9 @@ export default function ProjectIntro() {
     <div
       ref={sectionRef}
       className="h-screen w-screen flex flex-col items-center justify-center relative"
-      data-testid="project-intro-section"
     >
       {/* 프로젝트 타이틀 */}
-      <h2
-        className="text-10xl md:text-5xl font-bold relative z-10 mb-8"
-        data-testid="project-title"
-      >
+      <h2 className="text-9xl text-[var(--title-color)] tracking-wider font-bold relative z-10 mb-8">
         Projects
       </h2>
       {/* 중앙 세로선 컨테이너 (스크롤에 따라 아래로 이동) */}
@@ -77,7 +73,6 @@ export default function ProjectIntro() {
             opacity: lineOpacity,
             transformOrigin: "center",
           }}
-          data-testid="expanding-line"
         />
       </motion.div>
     </div>

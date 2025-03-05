@@ -54,8 +54,8 @@ export default function Navigation({ activeSection }: NavigationProps) {
                 href={`#${item.id}`}
                 className={`${
                   activeSection === item.id
-                    ? "text-xl font-bold"
-                    : "text-xl hover:text-blue-600"
+                    ? "text-xl font-bold text-[var(--title-color)]"
+                    : "text-xl hover:font-bold"
                 } transition-colors duration-200`}
               >
                 {item.label}

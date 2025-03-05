@@ -97,7 +97,9 @@ export default function AboutMe({ profile }: { profile: Profile }) {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center">
-      <h2 className="text-5xl font-semibold text-center m-6">About me</h2>
+      <h2 className="text-5xl text-[var(--title-color)] font-semibold text-center m-6">
+        About me
+      </h2>
       <div id="about-me" className="text-4xl text-center">
         {profile.intro.map((text, index) => (
           <p key={index} className="block m-4">

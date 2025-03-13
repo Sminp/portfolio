@@ -7,12 +7,18 @@ interface Profile {
 export default function AboutMe({ profile }: { profile: Profile }) {
   const [currentCharCount, setCurrentCharCount] = useState(0);
 
-  // 각 문단의 문자열 길이를 미리 계산
-  const paragraphLengths = useRef(profile.intro.map((text) => text.length));
-  // 총 문자열 길이
-  const totalCharCount = useRef(
-    paragraphLengths.current.reduce((acc, len) => acc + len, 0)
-  );
+  // Calculate paragraph lengths and total character count when profile changes
+  const paragraphLengths = useRef<number[]>([]);
+  const totalCharCount = useRef<number>(0);
+
+  // Update the refs when profile changes
+  useEffect(() => {
+    paragraphLengths.current = profile.intro.map((text) => text.length);
+    totalCharCount.current = paragraphLengths.current.reduce(
+      (acc, len) => acc + len,
+      0
+    );
+  }, [profile.intro]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,23 +28,22 @@ export default function AboutMe({ profile }: { profile: Profile }) {
       const rect = aboutSection.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      // 1. bottom이 화면에 들어오기 전까지는 모든 글자가 회색
+      // 1. All text is gray before bottom enters viewport
       if (rect.bottom >= viewportHeight) {
         setCurrentCharCount(0);
         return;
       }
 
-      // 2. bottom이 화면 bottom의 50% 위치에 도달하면 모든 글자가 검정색
+      // 2. All text is black when bottom reaches 50% of viewport height
       const bottomThreshold = viewportHeight * 0.5;
       if (rect.bottom <= bottomThreshold) {
         setCurrentCharCount(totalCharCount.current);
         return;
       }
 
-      // 그 사이에 있을 때는 스크롤 위치에 따라 글자 색상 점진적 변경
-      // bottom이 화면에 보이기 시작한 시점부터 하단 threshold까지의 진행률 계산
-      const startPosition = viewportHeight; // bottom이 화면에 보이기 시작하는 위치
-      const endPosition = bottomThreshold; // 모든 글자가 검정색이 되는 위치
+      // Progressive change based on scroll position between these points
+      const startPosition = viewportHeight; // When bottom enters viewport
+      const endPosition = bottomThreshold; // When all text should be black
 
       const totalScrollDistance = startPosition - endPosition;
       const currentScrollPosition = rect.bottom;
@@ -51,20 +56,20 @@ export default function AboutMe({ profile }: { profile: Profile }) {
         )
       );
 
-      // 보여줄 글자 수 계산
+      // Calculate visible characters based on progress
       const visibleChars = Math.floor(totalCharCount.current * progressRatio);
       setCurrentCharCount(visibleChars);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // 초기 로드 시 실행
+    handleScroll(); // Run on initial load
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [profile.intro]);
+  }, []);
 
-  // 주어진 문단 인덱스와 글자 인덱스까지의 총 글자 수 계산
+  // Calculate total characters up to a given position
   const getTotalCharsUpTo = (paragraphIndex: number, charIndex: number) => {
     let total = 0;
     for (let i = 0; i < paragraphIndex; i++) {
@@ -73,7 +78,7 @@ export default function AboutMe({ profile }: { profile: Profile }) {
     return total + charIndex;
   };
 
-  // 텍스트의 각 글자에 색상 적용
+  // Render text with color transition
   const renderTextWithColorTransition = (
     text: string,
     paragraphIndex: number
@@ -84,9 +89,9 @@ export default function AboutMe({ profile }: { profile: Profile }) {
 
       return (
         <span
-          key={charIndex}
+          key={`${paragraphIndex}-${charIndex}`}
           className={`transition-colors duration-100 ${
-            isActive ? "" : "text-gray-400"
+            isActive ? "text-black" : "text-gray-400"
           }`}
         >
           {char}

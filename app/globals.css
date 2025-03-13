@@ -27,11 +27,13 @@ html {
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
+  --title-color: #0600ab;
 }
 
 .dark {
   --background: #1a1a1a;
   --foreground: #ededed;
+  --title-color: #ededed;
 }
 
 /* 이렇게 하면 아이콘도 바꿔야됨 */
@@ -39,6 +41,7 @@ html {
   :root {
     --background: #1a1a1a;
     --foreground: #ededed;
+    --title-color: #ededed;
   }
 }
 

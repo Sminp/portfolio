@@ -1,5 +1,5 @@
-// 로딩 페이지
 "use client";
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -10,7 +10,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     // 초기 로딩 애니메이션을 위한 타이머
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -25,11 +25,11 @@ export default function Template({ children }: { children: React.ReactNode }) {
           transition={{ duration: 0.5 }}
         >
           <motion.div
-            className="text-4xl font-bold text-blue-600"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl font-bold text-[#0033FF]"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
           >
-            Portfolio
+            Somin Park
           </motion.div>
         </motion.div>
       ) : (

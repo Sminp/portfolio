@@ -1,115 +1,145 @@
 {
   "ko": [
     {
-      "id": 1,
+      "id": 0,
       "title": "Portfolio",
       "description": "개인 포트폴리오 웹사이트",
-      "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
+      "performance": [
+        "Three.js 활용하여 시각적 차별성을 강화하였습니다.",
+        "다양한 애니메이션과 인터랙션을 통해 사용자 경험 개선하였습니다.",
+        "GitHub Actions를 활용한 자동 배포 적용하였습니다."
+      ],
       "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/username/portfolio",
-      "demo": "",
       "date": ["2025.02", "진행 중"]
     },
     {
-      "id": 2,
+      "id": 1,
       "title": "OPTT",
       "description": "OTT 추천 웹사이트",
-      "longDescription": "드래그 앤 드롭 기능과 로컬 스토리지를 활용한 데이터 저장 기능을 갖춘 Todo 애플리케이션입니다.",
+      "performance": [
+        "애자일 방법론을 적용하여 버그를 최소화하고 빠른 개발 주기를 확보하였습니다.",
+        "반응형 웹을 적용하여 다양한 디바이스에서 최적화된 UI를 제공하였습니다.",
+        "프로젝트 기획부터 백엔드, UI/UX까지 주도적으로 담당하였습니다."
+      ],
       "technologies": ["React", "JavaScript", "Redux", "Express"],
       "image": "/projects/todo.jpg",
       "github": "https://github.com/kny0716/OPTT.git",
-      "demo": "",
       "date": ["2023.10", "2023.12"]
     },
     {
-      "id": 3,
+      "id": 2,
       "title": "Dinary",
       "description": "감정 일기 요약 웹사이트",
-      "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
+      "performance": [
+        "Recoil을 도입하여 상태 관리를 최적화하였습니다.",
+        "웹과 모바일 UX 차이를 고려한 UI 개편을 하였습니다.",
+        "어려운 팀원과 협업하며 커뮤니케이션 능력을 향상시켰습니다."
+      ],
       "technologies": ["React", "JavaScript", "Styled Components"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/Sminp/Dinary.git",
-      "demo": "",
       "date": ["2023.02", "2023.12"]
     },
     {
-      "id": 4,
+      "id": 3,
       "title": "UNO",
       "description": "UNO 게임",
-      "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
+      "performance": [
+        "팀원들의 역할을 능력에 맞게 배분하여 프로젝트를 성공적으로 완수하였습니다.",
+        "가장 어려운 기능(게임 로직, 코드 리팩토링, 유지보수 가능성)을 직접 개발하였습니다.",
+        "팀원 간의 성장과 협업 효율성을 높이기 위한 리더십 경험을 쌓았습니다."
+      ],
       "technologies": ["Python", "Pygame"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/Sminp/Softwareengineering.git",
-      "demo": "",
       "date": ["2023.03", "2023.05"]
     },
     {
-      "id": 5,
+      "id": 4,
       "title": "CookIndoor",
       "description": "요리 만들기 게임",
-      "longDescription": "드래그 앤 드롭 기능과 로컬 스토리지를 활용한 데이터 저장 기능을 갖춘 Todo 애플리케이션입니다.",
+      "performance": [
+        "OpenCV를 활용한 손 인식 기능 구현하였습니다.",
+        "단계별 진행 방식 도입으로 UX 향상하였습니다.",
+        "기획의 중요성을 직접 경험하고, 개발 문서를 상세히 작성하는 습관을 형성하였습니다."
+      ],
       "technologies": ["Python", "Pygame", "OpenCV"],
       "image": "/projects/todo.jpg",
       "github": "https://github.com/Seeyou2000/OpenSourceProject.git",
-      "demo": "",
       "date": ["2022.11", "2022.12"]
     }
   ],
   "en": [
     {
-      "id": 1,
+      "id": 0,
       "title": "Portfolio",
       "description": "Individual portfolio website",
-      "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
+      "performance": [
+        "Enhanced visual differentiation using Three.js.",
+        "Improved user experience through various animations and interactions.",
+        "Implemented automated deployment using GitHub Actions."
+      ],
       "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/username/portfolio",
-      "demo": "",
       "date": ["2025.02", "continuing"]
     },
     {
-      "id": 2,
+      "id": 1,
       "title": "OPTT",
       "description": "OTT recommendation website",
-      "longDescription": "드래그 앤 드롭 기능과 로컬 스토리지를 활용한 데이터 저장 기능을 갖춘 Todo 애플리케이션입니다.",
+      "performance": [
+        "Applied agile methodology to minimize bugs and ensure fast development cycles.",
+        "Implemented responsive design to provide an optimized UI across various devices.",
+        "Led the project from planning to backend and UI/UX development."
+      ],
       "technologies": ["React", "JavaScript", "Redux", "Express"],
       "image": "/projects/todo.jpg",
       "github": "https://github.com/kny0716/OPTT.git",
-      "demo": "",
       "date": ["2023.10", "2023.12"]
     },
     {
-      "id": 3,
+      "id": 2,
       "title": "Dinary",
       "description": "Emotion diary summary website",
-      "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
+      "performance": [
+        "Optimized state management by introducing Recoil.",
+        "Redesigned the UI considering the differences between web and mobile UX.",
+        "Improved communication skills by collaborating with challenging team members."
+      ],
       "technologies": ["React", "JavaScript", "Styled Components"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/Sminp/Dinary.git",
-      "demo": "",
       "date": ["2023.02", "2023.12"]
     },
     {
-      "id": 4,
+      "id": 3,
       "title": "UNO",
       "description": "UNO game",
-      "longDescription": "반응형 디자인과 모던한 UI/UX를 적용한 개인 포트폴리오 웹사이트입니다. Next.js의 App Router를 활용하여 최적화된 성능을 구현했습니다.",
+      "performance": [
+        "Successfully completed the project by assigning roles based on team members' abilities.",
+        "Developed the most challenging features (game logic, code refactoring, maintainability).",
+        "Gained leadership experience in enhancing team growth and collaboration efficiency."
+      ],
       "technologies": ["Python", "Pygame"],
       "image": "/projects/portfolio.jpg",
       "github": "https://github.com/Sminp/Softwareengineering.git",
-      "demo": "",
       "date": ["2023.03", "2023.05"]
     },
     {
-      "id": 5,
+      "id": 4,
       "title": "CookIndoor",
       "description": "Cooking game",
-      "longDescription": "드래그 앤 드롭 기능과 로컬 스토리지를 활용한 데이터 저장 기능을 갖춘 Todo 애플리케이션입니다.",
+      "performance": [
+        "Implemented hand gesture recognition using OpenCV.",
+        "Enhanced UX by introducing step-by-step progression.",
+        "Gained hands-on experience in planning and developed a habit of writing detailed documentation."
+      ],
       "technologies": ["Python", "Pygame", "OpenCV"],
       "image": "/projects/todo.jpg",
       "github": "https://github.com/Seeyou2000/OpenSourceProject.git",
-      "demo": "",
       "date": ["2022.11", "2022.12"]
     }
   ]

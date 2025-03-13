@@ -1,18 +1,48 @@
 import { useEffect, useState, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
 
 // 환경에 따라 GLTF 모델 경로 설정
 const MODEL_PATH = `${
   process.env.NODE_ENV === "production" ? "/portfolio" : ""
-}/3d/scene.gltf`;
+}/model/scene.gltf`;
+
+// 전역 회전값을 관리하기 위한 변수들
+const globalRotationSpeed = { value: 0 };
+const globalTargetRotation = { value: 0 };
 
 const Model = () => {
   const [modelLoaded, setModelLoaded] = useState(false);
   const { scene } = useGLTF(MODEL_PATH);
   const modelRef = useRef<THREE.Group | null>(null);
-  const [autoRotate, setAutoRotate] = useState(false);
+  const { gl } = useThree();
+  const isVisibleRef = useRef(false);
+
+  // Intersection Observer를 사용해 뷰포트에 요소가 보이는지 감지
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisibleRef.current = entry.isIntersecting;
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    // Canvas의 부모 요소 관찰
+    const canvasParent = gl.domElement.parentElement;
+    if (canvasParent) {
+      observer.observe(canvasParent);
+    }
+
+    return () => {
+      if (canvasParent) {
+        observer.unobserve(canvasParent);
+      }
+      observer.disconnect();
+    };
+  }, [gl]);
 
   useEffect(() => {
     if (scene) {
@@ -37,19 +67,23 @@ const Model = () => {
         modelRef.current.add(modelCopy);
         modelRef.current.position.z = 0;
       }
-
-      const timer = setTimeout(() => {
-        setAutoRotate(true);
-        console.log("자동 회전 활성화됨");
-      }, 1000);
-
-      return () => clearTimeout(timer);
     }
   }, [scene]);
 
+  // 부드러운 애니메이션을 위한 프레임 업데이트
   useFrame(() => {
-    if (modelRef.current && autoRotate) {
-      modelRef.current.rotation.y += 0.05;
+    if (modelRef.current && isVisibleRef.current) {
+      // 현재 회전 속도와 목표 회전값 사이의 차이를 부드럽게 보간
+      const diff = globalTargetRotation.value - globalRotationSpeed.value;
+      globalRotationSpeed.value += diff * 1; // 보간 계수 (값이 클수록 더 빠른 반응)
+
+      // 회전 적용
+      modelRef.current.rotation.y += globalRotationSpeed.value;
+
+      // 매우 작은 움직임은 점차 감소
+      if (Math.abs(globalRotationSpeed.value) < 0.0001) {
+        globalRotationSpeed.value = 0;
+      }
     }
   });
 
@@ -66,8 +100,32 @@ const Model = () => {
 };
 
 const ModelViewer = () => {
+  const viewerRef = useRef<HTMLDivElement>(null);
+
+  // 전역 스크롤 이벤트 리스너 등록
+  useEffect(() => {
+    // 스크롤 이벤트 설정 - 페이지 전체에 적용
+    const handleGlobalWheel = (event: WheelEvent) => {
+      // 스크롤 감도 조절
+      const scrollSensitivity = 0.05;
+      const scrollDirection = event.deltaY > 0 ? 1 : -1;
+
+      // 목표 회전값 증가 (즉각적 반응과 부드러움의 균형)
+      globalTargetRotation.value = scrollDirection * scrollSensitivity * 2;
+
+      // 이벤트 전파는 막지 않음 (페이지 스크롤도 작동하도록)
+    };
+
+    // 전역 이벤트 리스너 등록 (전체 윈도우에 적용)
+    window.addEventListener("wheel", handleGlobalWheel, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", handleGlobalWheel);
+    };
+  }, []);
+
   return (
-    <div className="w-[280px] h-[512px] overflow-hidden">
+    <div ref={viewerRef} className="w-[280px] h-[512px] overflow-hidden">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 50, near: 0.1, far: 1000 }}
         gl={{
@@ -78,7 +136,6 @@ const ModelViewer = () => {
         onCreated={({ gl, camera }) => {
           console.log("Canvas 생성됨:", { gl, camera });
           gl.domElement.style.touchAction = "none";
-          gl.domElement.style.pointerEvents = "none";
           camera.position.set(0, 0, 5);
           camera.lookAt(0, 0, 0);
           camera.updateProjectionMatrix();

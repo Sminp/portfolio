@@ -4,11 +4,9 @@ export type Language = "ko" | "en";
 export interface General {
   ko: {
     greeting: string;
-    projectBtn: string;
   };
   en: {
     greeting: string;
-    projectBtn: string;
   };
 }
 
@@ -16,11 +14,10 @@ export interface Project {
   id: number;
   title: string;
   description: string;
-  longDescription: string;
+  performance: string[];
   technologies: string[];
   image: string;
   github?: string;
-  demo?: string;
   date: string[];
 }
 

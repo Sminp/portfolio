@@ -1,9 +1,8 @@
-"use client";
-import ThemeToggle from "./ThemeToggle";
-import LanguageToggle from "./LanguageToggle";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";
 
 interface NavigationProps {
   activeSection: string;
@@ -11,6 +10,26 @@ interface NavigationProps {
 
 export default function Navigation({ activeSection }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < lastScrollY) {
+        setIsVisible(true); // 스크롤을 올릴 때 네비게이션 표시
+      } else {
+        setIsVisible(false); // 스크롤을 내릴 때 네비게이션 숨김
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const navItems = [
     { id: "about", label: "About" },
@@ -18,14 +37,14 @@ export default function Navigation({ activeSection }: NavigationProps) {
     { id: "contact", label: "Contact" },
   ];
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <nav className="relative  w-screen border border-[#f2e6ee] dark:border-[#4d4f78]">
+    <nav
+      className={`fixed top-0 left-0 w-full bg-white/75 backdrop-blur-sm dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-all duration-300 z-50 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="lg:flex h-[79px] items-center justify-between px-[100px]">
-        <Link href={"#hero"} className="text-2xl font-black">
+        <Link href={"#hero"} className="text-2xl text-[#0033FF] font-black">
           Somin Park
         </Link>
         <div className="flex gap-x-12">
@@ -35,8 +54,8 @@ export default function Navigation({ activeSection }: NavigationProps) {
                 href={`#${item.id}`}
                 className={`${
                   activeSection === item.id
-                    ? "text-xl font-bold"
-                    : "text-xl hover:text-blue-600"
+                    ? "text-xl font-bold text-[var(--title-color)]"
+                    : "text-xl hover:font-bold"
                 } transition-colors duration-200`}
               >
                 {item.label}
@@ -53,7 +72,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
       {/* Mobile Navigation */}
       <div className="lg:hidden w-screen">
         <div className="flex items-center justify-between px-6 h-[79px]">
-          <Link href={""} className="text-xl font-black">
+          <Link href={"#hero"} className="text-xl text-[#0033FF] font-black">
             Somin Park
           </Link>
           <button onClick={toggleMenu} className="" aria-label="Toggle menu">
@@ -63,7 +82,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="absolute top-[79px] left-0 w-full bg-white border-t border-[#f2e6ee] py-4">
+          <div className="absolute top-[79px] left-0 w-full bg-white dark:bg-gray-900 border-t border-[#f2e6ee] dark:border-gray-700 py-4 transition-colors duration-300">
             <div className="flex flex-col items-center gap-y-4">
               {navItems.map((item) => (
                 <p key={item.id}>

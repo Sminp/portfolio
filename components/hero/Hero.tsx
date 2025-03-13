@@ -25,16 +25,29 @@ export default function Hero() {
   return (
     <div className="relative flex flex-col items-center justify-center">
       <div className="flex min-h-screen w-screen flex flex-row items-center justify-center">
-        <p className="text-6xl font-bold text-left mb-10 -mr-10">
-          <strong className="bg-gradient-to-r from-[#977DFF] via-[#0033FF] to-[#0600AB] bg-[linear-gradient(-81deg,#977DFF_0%,#0033FF_80%,#0600AB_100%)] bg-clip-text text-transparent">
-            {profile.about}
-          </strong>
-          <br />
-          <strong>
-            {profile.role}
-            {general.greeting}.
-          </strong>
-        </p>
+        {language === "ko" ? (
+          <p className="text-6xl font-bold text-left mb-10">
+            <strong className="bg-gradient-to-r from-[#977DFF] via-[#0033FF] to-[#0600AB] bg-[linear-gradient(-81deg,#977DFF_0%,#0033FF_80%,#0600AB_100%)] bg-clip-text text-transparent">
+              {profile.about}
+            </strong>
+            <br />
+            <strong>
+              {profile.role}
+              {general.greeting}.
+            </strong>
+          </p>
+        ) : (
+          <p className="text-6xl font-bold text-left mb-10">
+            <strong>
+              {general.greeting}
+              {profile.role}
+            </strong>
+            <br />
+            <strong className="bg-gradient-to-r from-[#977DFF] via-[#0033FF] to-[#0600AB] bg-[linear-gradient(-81deg,#977DFF_0%,#0033FF_80%,#0600AB_100%)] bg-clip-text text-transparent">
+              {profile.about}.
+            </strong>
+          </p>
+        )}
         {isModelViewerAvailable ? (
           <ModelViewer />
         ) : (

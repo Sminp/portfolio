@@ -10,7 +10,7 @@
     "JavaScript",
     "TypeScript",
     "Next.js",
-    "Redux",
+    "Zustand",
     "Express",
     "Styled Components",
     "Tailwind CSS"
@@ -19,11 +19,11 @@
     "name": "박소민",
     "role": "프론트엔드 개발자",
 
-    "about": "공감과 배려를 중요시 여기는",
+    "about": "사람과 기술을 연결하는",
     "intro": [
-      "모든 프로젝트의 UX/UI를 중요하게 생각해요",
-      "연령층, 국적에 관계 없이 누구나 친해질 수 있어요",
-      "애자일 등 프로덕트가 생산되는 과정을 중요시 여겨요"
+      "사용자 경험을 고민하며 더 나은 UX/UI를 설계합니다.",
+      "원활한 커뮤니케이션으로 누구와도 협업할 수 있습니다.",
+      "문제를 빠르게 해결하고, 지속적으로 개선하며 성장합니다."
     ],
     "education": [
       {
@@ -37,11 +37,11 @@
   "en": {
     "name": "Somin Park",
     "role": "Frontend Developer",
-    "about": "Empathy and consideration are important",
+    "about": "who connects people and tech",
     "intro": [
-      "UX/UI is an important part",
-      "I hang out all the people regardless of age, nationality",
-      "The process of producing products such as agile is important"
+      "I design better UX/UI by carefully considering the user experience.",
+      "I collaborate effectively with anyone through smooth communication.",
+      "I solve problems quickly and continuously improve to grow."
     ],
     "education": [
       {

@@ -31,19 +31,17 @@ export default function ProjectContent({ project }: ProjectContentProps) {
               />
             </div>
             <div className="w-1/2 h-full p-[50px] mb-15 overflow-y-auto">
-              <p className="text-[32px]/8 font-bold text-left text-black">
+              <p className="text-[32px]/8 font-bold text-left">
                 {project.title}
               </p>
-              <p className="text-xl/10 text-left text-black">
+              <p className="text-xl/10 text-left">
                 {project.date[0]}-{project.date[1]}
               </p>
-              <p className="text-2xl/10 text-left text-black">
-                {project.description}
-              </p>
+              <p className="text-2xl/10 text-left">{project.description}</p>
               <div className="mt-4">
                 {project.performance.map((content, i) => (
                   <p
-                    className="text-xl/8 text-left text-black break-words"
+                    className="text-xl/8 text-left break-words"
                     key={i}
                     style={{
                       maxWidth: "100%",
@@ -61,7 +59,7 @@ export default function ProjectContent({ project }: ProjectContentProps) {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-2xl/10 font-bold text-left text-black hover:text-blue-800"
+                    className="text-2xl/10 font-bold text-left hover:text-blue-800"
                   >
                     Github
                   </Link>
@@ -70,7 +68,7 @@ export default function ProjectContent({ project }: ProjectContentProps) {
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.technologies.map((tech, index) => {
                   return (
-                    <span className="text-xl text-left text-black" key={index}>
+                    <span className="text-xl text-left" key={index}>
                       #{tech}
                     </span>
                   );

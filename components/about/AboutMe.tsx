@@ -91,7 +91,7 @@ export default function AboutMe({ profile }: { profile: Profile }) {
         <span
           key={`${paragraphIndex}-${charIndex}`}
           className={`transition-colors duration-100 ${
-            isActive ? "text-black" : "text-gray-400"
+            isActive ? "" : "text-gray-400"
           }`}
         >
           {char}

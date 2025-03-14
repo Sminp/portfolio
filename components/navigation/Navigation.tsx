@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
@@ -12,6 +12,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,8 +24,19 @@ export default function Navigation({ activeSection }: NavigationProps) {
       setLastScrollY(window.scrollY);
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, [lastScrollY]);
 
   const toggleMenu = () => {
@@ -43,9 +55,10 @@ export default function Navigation({ activeSection }: NavigationProps) {
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="lg:flex h-[79px] items-center justify-between px-[100px]">
+      {/* 데스크탑 네비게이션 */}
+      <div className="hidden lg:flex h-[79px] items-center justify-between px-[100px]">
         <Link href={"#hero"} className="text-2xl text-[#0033FF] font-black">
-          Somin Park
+          ich bin
         </Link>
         <div className="flex gap-x-12">
           {navItems.map((item) => (
@@ -55,50 +68,62 @@ export default function Navigation({ activeSection }: NavigationProps) {
                 className={`${
                   activeSection === item.id
                     ? "text-xl font-bold text-[var(--title-color)]"
-                    : "text-xl hover:font-bold"
-                } transition-colors duration-200`}
+                    : "text-xl hover:font-bold "
+                } transition-all duration-200`}
               >
                 {item.label}
               </Link>
             </p>
           ))}
         </div>
-        <div className="flex items-center gap-x-2">
+        <div className="focus:outline-none flex items-center gap-x-2">
           <ThemeToggle />
           <LanguageToggle />
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <div className="lg:hidden w-screen">
+      {/* 모바일 네비게이션 */}
+      <div className="lg:hidden" ref={menuRef}>
         <div className="flex items-center justify-between px-6 h-[79px]">
           <Link href={"#hero"} className="text-xl text-[#0033FF] font-black">
-            Somin Park
+            ich bin
           </Link>
-          <button onClick={toggleMenu} className="" aria-label="Toggle menu">
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <button
+            onClick={toggleMenu}
+            className="focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? (
+              <X
+                className="transition-transform duration-300 hover:rotate-180"
+                size={24}
+              />
+            ) : (
+              <Menu size={24} />
+            )}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* 모바일 메뉴 드롭다운 */}
         {isMenuOpen && (
-          <div className="absolute top-[79px] left-0 w-full bg-white dark:bg-gray-900 border-t border-[#f2e6ee] dark:border-gray-700 py-4 transition-colors duration-300">
-            <div className="flex flex-col items-center gap-y-4">
+          <div className="absolute top-[79px] left-0 w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-6 shadow-lg transition-all duration-300">
+            <div className="flex flex-col items-center space-y-6">
               {navItems.map((item) => (
-                <p key={item.id}>
-                  <Link
-                    href={`#${item.id}`}
-                    className={`${
-                      activeSection === item.id
-                        ? "text-xl font-bold"
-                        : "text-xl hover:text-blue-600"
-                    } transition-colors duration-200`}
-                  >
-                    {item.label}
-                  </Link>
-                </p>
+                <Link
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={`${
+                    activeSection === item.id
+                      ? "text-lg font-bold text-[#0033FF]"
+                      : "text-lg text-gray-800 dark:text-gray-200 hover:font-bold"
+                  } transition-all duration-200`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
               ))}
-              <div className="flex items-center gap-x-2 mt-2">
+
+              <div className="flex items-center gap-x-4 pt-4">
                 <ThemeToggle />
                 <LanguageToggle />
               </div>

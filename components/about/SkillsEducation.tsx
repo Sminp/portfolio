@@ -20,7 +20,7 @@ export default function SkillsEducation({ profile }: { profile: Profile }) {
       {/* gap-[50px] 추가 */}
       <div
         ref={divRef}
-        className="max-w-7xl w-full flex flex-row items-center justify-center gap-[50px]"
+        className="max-w-7xl w-full flex md:flex-row flex-col items-center justify-center gap-[50px]"
       >
         <motion.div
           initial={{ opacity: 0, y: 50 }}

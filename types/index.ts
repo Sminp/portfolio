@@ -17,7 +17,7 @@ export interface Project {
   performance: string[];
   technologies: string[];
   image: string;
-  github?: string;
+  github: string;
   date: string[];
 }
 

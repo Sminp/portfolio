@@ -9,7 +9,7 @@ export default function ProjectBox() {
   const [projectActive, setProjectActive] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const CARD_HEIGHT = 631;
-  const TOTAL_HEIGHT = CARD_HEIGHT * (projects.length + 1);
+  const TOTAL_HEIGHT = CARD_HEIGHT * (projects.length + 2);
 
   useEffect(() => {
     if (projects.length === 0) return;

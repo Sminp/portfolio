@@ -86,7 +86,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
       <div className="lg:hidden" ref={menuRef}>
         <div className="flex items-center justify-between px-6 h-[79px]">
           <Link href={"#hero"} className="text-xl text-[#0033FF] font-black">
-            ich bin
+            Somin Park
           </Link>
           <button
             onClick={toggleMenu}

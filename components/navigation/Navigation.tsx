@@ -58,7 +58,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
       {/* 데스크탑 네비게이션 */}
       <div className="hidden lg:flex h-[79px] items-center justify-between px-[100px]">
         <Link href={"#hero"} className="text-2xl text-[#0033FF] font-black">
-          ich bin
+          Somin Park
         </Link>
         <div className="flex gap-x-12">
           {navItems.map((item) => (

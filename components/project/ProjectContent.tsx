@@ -19,7 +19,7 @@ export default function ProjectContent({ project }: ProjectContentProps) {
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          <div className="w-full h-full flex flex-row items-center">
+          <div className="w-full h-full flex md:flex-row flex-col items-center">
             <div className="w-[620px] h-[631px] rounded-l-[20px] bg-[#d9d9d9] overflow-hidden flex justify-items-center">
               <Image
                 width={620}
@@ -30,7 +30,7 @@ export default function ProjectContent({ project }: ProjectContentProps) {
                 alt={project.title}
               />
             </div>
-            <div className="w-1/2 h-full p-[50px] mb-15 overflow-y-auto">
+            <div className="md:w-1/2 w-full h-full p-[50px] mb-15 overflow-y-auto">
               <p className="text-[32px]/8 font-bold text-left">
                 {project.title}
               </p>

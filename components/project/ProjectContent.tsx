@@ -21,14 +21,21 @@ export default function ProjectContent({ project }: ProjectContentProps) {
         >
           <div className="w-full h-full flex md:flex-row flex-col items-center">
             <div className="w-[620px] h-[631px] rounded-l-[20px] bg-[#d9d9d9] overflow-hidden flex justify-items-center">
-              <Image
-                width={620}
-                height={631}
-                src={`${
-                  process.env.NODE_ENV === "production" ? "/portfolio" : ""
-                }/projects/${project.title}.png`}
-                alt={project.title}
-              />
+              <Link
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  className="hover:scale-105 transition-all duration-100 object-fit"
+                  width={620}
+                  height={631}
+                  src={`${
+                    process.env.NODE_ENV === "production" ? "/portfolio" : ""
+                  }/projects/${project.title}.png`}
+                  alt={project.title}
+                />
+              </Link>
             </div>
             <div className="md:w-1/2 w-full h-full p-[50px] mb-15 overflow-y-auto">
               <p className="text-[32px]/8 font-bold text-left">

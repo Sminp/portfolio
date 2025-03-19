@@ -42,7 +42,7 @@ export default function ProjectBox() {
       <div className="sticky top-0">
         <div className=" h-screen flex items-center justify-center">
           {projectActive && (
-            <div className="w-[1240px] h-[631px] relative rounded-[20px] border border-[#4d4f78]">
+            <div className="xl:w-[1240px] h-[631px] relative rounded-[20px] border border-[#4d4f78]">
               <ProjectContent project={projects[activeIndex]} />
             </div>
           )}

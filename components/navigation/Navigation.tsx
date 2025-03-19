@@ -51,7 +51,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full bg-white/75 backdrop-blur-sm dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-all duration-300 z-50 ${
+      className={`fixed top-0 left-0 w-screen bg-white/75 backdrop-blur-sm dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-all duration-300 z-50 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -84,7 +84,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
 
       {/* 모바일 네비게이션 */}
       <div className="lg:hidden" ref={menuRef}>
-        <div className="flex items-center justify-between px-6 h-[79px]">
+        <div className="flex items-center justify-between px-6 h-[79px] w-screen">
           <Link href={"#hero"} className="text-xl text-[#0033FF] font-black">
             Somin Park
           </Link>

@@ -125,7 +125,10 @@ const ModelViewer = () => {
   }, []);
 
   return (
-    <div ref={viewerRef} className="w-[280px] h-[512px] overflow-hidden">
+    <div
+      ref={viewerRef}
+      className="md:w-[280px] md:h-[512px] w-[140px] h-[256px] overflow-hidden"
+    >
       <Canvas
         camera={{ position: [0, 0, 5], fov: 50, near: 0.1, far: 1000 }}
         gl={{

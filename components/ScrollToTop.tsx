@@ -46,7 +46,7 @@ export default function ScrollToTop() {
             right: "2rem",
             ...(isRelativeToContact && {
               bottom: "26rem",
-              position: "absolute",
+              right: "2rem",
             }),
           }}
         >

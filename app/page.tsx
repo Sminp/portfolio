@@ -50,7 +50,7 @@ export default function Home() {
       <header>
         <Navigation activeSection={activeSection} />
       </header>
-      <main className="min-h-screen relative bg-white dark:bg-gray-900 transition-colors duration-300">
+      <main className="relative max-w-screen bg-white dark:bg-gray-900 transition-colors duration-300">
         <section
           id="hero"
           className="min-h-screen transition-colors duration-300"

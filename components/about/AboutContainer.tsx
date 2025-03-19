@@ -9,10 +9,10 @@ export default function About() {
 
   return (
     <>
-      <section className="min-h-screen">
+      <section className="md:min-h-screen min-h-1/2">
         <AboutMe profile={profile} />
       </section>
-      <section className="min-h-screen">
+      <section className="md:min-h-screen min-h-1/2">
         <SkillsEducation profile={profile} />
       </section>
     </>

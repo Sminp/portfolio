@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 개인 포트폴리오
 
-## Getting Started
+> Next.js와 Three.js를 활용한 시각적 차별성이 돋보이는 개인 포트폴리오 사이트  
 
-First, run the development server:
+🔗 [포트폴리오 바로가기](https://sminp.github.io/portfolio/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📌 프로젝트 개요
+- 개발 기간: 2025.02 ~ 2025.03
+- 주요 기술 스택: Next.js, TypeScript, Three.js, Zustand, Tailwind CSS
+- 프로젝트 유형: 개인 프로젝트
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎯 프로젝트 목표
+- 인터랙션과 3D 시각화를 활용하여 **차별화된 개발자 포트폴리오** 구축
+- 자동 배포를 적용하여 운영 효율성 극대화
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ 주요 기능
+- [ ] Three.js 기반 인터랙티브 UI
+- [ ] 애니메이션 효과를 통한 UX 강화
+- [ ] Github Actions 기반 CI/CD 자동 배포
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 👩‍💻 역할과 기여
+- 기획 및 UX/UI 설계 → Figma 활용
+- 프론트엔드 전담 개발
+- GitHub Actions로 자동 배포 파이프라인 구축
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔍 배운 점 & 성과
+- **웹 디자인 수상작 분석**을 통한 UX 개선 아이디어 습득
+- **시각적 차별성 확보** → 포트폴리오 경쟁력 강화
